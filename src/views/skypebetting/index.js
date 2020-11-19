@@ -15,7 +15,7 @@ export default function SkypeBetting(props) {
             </div>
             <div className="col-sm-12" style={{display:"flex"}}>
             <div className="col-sm-6 text-container">
-                <span>MGM provides Skype Betting – a well-known and convenient service preferred by players that are looking for even higher limits than what the Asian bookies can regularly offer on sportsbook websites.
+                <span>Corisbet Gambling provides Skype Betting – a well-known and convenient service preferred by players that are looking for even higher limits than what the Asian bookies can regularly offer on sportsbook websites.
                 </span>
             </div>
             <div className="col-sm-6" style={{justifyContent:'center',display:'flex',flexDirection:"column",alignItems:'center'}}>
@@ -32,7 +32,7 @@ export default function SkypeBetting(props) {
             </div>
             <div className="col-sm-12">
             <div className="col-sm-12 text-container">
-                <span>MGM provides Skype Betting – a well-known and convenient service preferred by players that are looking for even higher limits than what the Asian bookies can regularly offer on sportsbook websites.
+                <span>Corisbet Gambling provides Skype Betting – a well-known and convenient service preferred by players that are looking for even higher limits than what the Asian bookies can regularly offer on sportsbook websites.
                 </span>
             </div>
             </div>
@@ -45,7 +45,7 @@ export default function SkypeBetting(props) {
                <h1 className='title'>HOW TO PLACE BETS VIA SKYPE BETTING?</h1>
             </div>
             <div className="col-sm-12 text-container">
-                <span>Using the Skype Betting service, MGM will process your requests via a dedicated Skype or Telegram channel. MGM special resources provide you with a chance to bet without limits and get the bet requests completed swiftly and without having to compromise on odds. You can make a request by stating the game and selection, following the minimum odds and stake, and MGM trading team will deliver!
+                <span>Using the Skype Betting service, Corisbet Gambling will process your requests via a dedicated Skype or Telegram channel. Corisbet Gambling special resources provide you with a chance to bet without limits and get the bet requests completed swiftly and without having to compromise on odds. You can make a request by stating the game and selection, following the minimum odds and stake, and Corisbet Gambling trading team will deliver!
 
 Skype Betting service is available from 9:00-23:00h CET.
                 </span>
@@ -56,7 +56,7 @@ Skype Betting service is available from 9:00-23:00h CET.
                <h1 className='title'>HOW TO OPEN AN ACCOUNT?</h1>
             </div>
             <div className="col-sm-12 text-container">
-                <span>For more information regarding Skype Betting service or other products and services, please contact MGM Customer Support via support@corisbet.com or use the live chat option
+                <span>For more information regarding Skype Betting service or other products and services, please contact Corisbet Gambling Customer Support via support@corisbet.com or use the live chat option
                 </span>
             </div>
             </div>

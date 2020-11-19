@@ -157,7 +157,7 @@ export default class LiveCasino extends PureComponent{
           return(
             <div className={`sportsbook-container casino`}>
                 <Helmet>
-                    <title>Live Casino- Macau Gambling Market</title>
+                    <title>Live Casino- Corisbet Gambling</title>
                 </Helmet>
                 {
                     wantToPlay &&  <GamePlayMode game={game} onClose={this.closeGame} togglePlayForReal={this.togglePlayForReal}/>

@@ -12,7 +12,7 @@ export const Virtual=(props)=>{
     return(                  
     <div className="col-md-12" style={{display:'flex',height:'calc(100vh - 60px)'}}>
     <Helmet>
-     <title>Virtual Sports - Macau Gambling Market(MGM)</title>
+     <title>Virtual Sports - Corisbet Gambling</title>
     </Helmet>
  
        <iframe ref={iframeRef} title="Virtual Sports Iframe" className="col-md-12" style={{width:'100%',height:'100%',display:loading && 'none'}} src={`https://sportsbook.africabetsgh.com/#/virtualsports?${authorize}&lang=${props.lang}`}></iframe>

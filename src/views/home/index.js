@@ -171,7 +171,7 @@ export default class Home extends PureComponent {
         return (
             <div className={`sportsbook-container ${appTheme+'-theme'}`}>
                 <Helmet>
-                    <title>Macau Gambling Market(MGM) - Sports Betting</title>
+                    <title>Corisbet Gambling - Sports Betting</title>
                 </Helmet>
                 <div className="sportsbook-inner">
                     <div className="sportsbook-view">

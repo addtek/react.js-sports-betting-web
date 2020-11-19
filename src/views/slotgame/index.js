@@ -156,7 +156,7 @@ export default class SlotGames extends PureComponent{
           return(
             <div className={`sportsbook-container casino`}>
                 <Helmet>
-                    <title>Slot Games- Macau Gambling Market(MGM)</title>
+                    <title>Slot Games- Corisbet Gambling</title>
                 </Helmet>
                 {
                     wantToPlay &&  <GamePlayMode game={game} onClose={this.closeGame} togglePlayForReal={this.togglePlayForReal}/>

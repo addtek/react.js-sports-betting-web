@@ -80,14 +80,14 @@
 .header-container .header-body .header-inner .header-row.main{
    height: 80px;
    /* background-color:#03767a; */
-   background-color:crimson;
+   background-color: #04343c;
 }
 
 .header-container .header-body .header-inner .header-row.secondary{
    height: 60px;
    /* background-color: #025f62; */
-   background-color: crimson;
-   border-bottom: 3px solid #7b0911;
+   background-color: #04343c;
+   border-bottom: 3px solid #f54b2c;
 }
 .header-container .header-body .header-inner .header-row .header-col{
     margin:0;
@@ -136,7 +136,7 @@
    display: flex;
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-controls>div.bottom .clear{
-   background-color: crimson;
+   background-color: #04343c;
    border-radius:  0 4px 4px 0;
    color:#fff
 }
@@ -165,8 +165,8 @@
    vertical-align: middle; */
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-controls .login button{
-    border:1px solid #ff7b00;
-    background-color:crimson;
+    border:1px solid#f54b2c;
+    background-color: #04343c;
     transition: color 300ms ease-out;
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-controls .login button:hover,
@@ -185,7 +185,7 @@
    margin: 0 0px 0px 10px;
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-controls .register button{
-   background-color: #ff7b00;
+   background-color:#f54b2c;
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-controls .lang{
    line-height: 60px;
@@ -319,10 +319,10 @@
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-links .link a.active{
    background-color: #fff;
-   color: crimson;
+   color:#f54b2c;
 }
 .header-container .header-body .header-inner .header-row .header-col .nav-links .link:hover a, .header-container .header-body .header-inner .header-row .header-col .nav-links .link:hover a span{
-   color: crimson !important;
+   color: #f54b2c !important;
 }
 .header-container.show-fix{
    position:sticky;

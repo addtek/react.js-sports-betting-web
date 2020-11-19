@@ -27,7 +27,7 @@ export default class Careers extends PureComponent{
         return(
             <div className="jobs col-sm-12">
                 <Helmet>
-                    <title>Job Oppurtunities- Macau Gambling Market</title>
+                    <title>Job Oppurtunities- Corisbet Gambling</title>
                 </Helmet>
                 <Switch>
                     <Route exact path={this.props.match.path}

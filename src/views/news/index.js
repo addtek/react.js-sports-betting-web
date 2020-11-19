@@ -91,7 +91,7 @@ export default class News extends PureComponent{
         return(
             <div className={`sportsbook-container news`}>
                 <Helmet>
-                    <title>News- Macau Gambling Market(MGM)</title>
+                    <title>News- Corisbet Gambling</title>
                 </Helmet>
             <div className="sportsbook-inner">
                 <div className="sportsbook-view">

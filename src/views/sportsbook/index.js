@@ -52,7 +52,7 @@ getBetslipFreebets,bulkUnsubscribe,validate,addEventToSelection,loadMarkets,load
     return (
       <div className={`sportsbook-container ${appTheme+'-theme'}`}>
         <Helmet>
-        <title>Sports Book- Macau Gambling Market(MGM)</title>
+        <title>Sports Book- Corisbet Gambling</title>
         </Helmet>
         <div className="sportsbook-inner">
           {/* <div className="sportsbook-mode">

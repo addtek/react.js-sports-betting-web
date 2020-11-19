@@ -37,7 +37,7 @@ export default class Footer extends PureComponent {
                             </div> */}
                             <div className="footer-col">
                                 <div className="footer-col-content">
-                                    <div className="title">Macau Gambling Market  (MGM)</div>
+                                    <div className="title">Corisbet Gambling</div>
                                     {/* <div className="item">RNG Certificate</div> */}
                                     <div className="item"> <NavLink exact to="/general-terms-and-conditions"><span>General Terms &amp; Conditions</span></NavLink></div>
                                     <div className="item"><NavLink exact to="/privacy-policy"><span>Privacy Policy</span></NavLink></div>
@@ -97,8 +97,8 @@ export default class Footer extends PureComponent {
                         </div>
                         <div className="footer-row bottom">
                             <div className="footer-col">
-                                <p className="brag">Macau Gambling Market (MGM) welcome punters with highs quality types of both online and offline sports, virtual games and slot games, featuring differentiated high odds, intensive risk management and continuously optimized user experience.</p>
-                                <p className="copy-right">Copyright © {moment().format('YYYY')} Macau Gambling Market  (MGM). All Rights Reserved.</p>
+                                <p className="brag">Corisbet Gambling welcome punters with highs quality types of both online and offline sports, virtual games and slot games, featuring differentiated high odds, intensive risk management and continuously optimized user experience.</p>
+                                <p className="copy-right">Copyright © {moment().format('YYYY')} Corisbet Gambling. All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ export const Roulette=(props)=>{
     return(
     <div className="col-md-12 roulette-container">
     <Helmet>
-    <title>Roulette - Macau Gambling Market(MGM)</title>
+    <title>Roulette - Corisbet Gambling</title>
     </Helmet>
         <iframe ref={iframeRef} title="Roulette Iframe"  style={{width:'100%',height:'100%',border:'none',display:loading && 'none'}} className="col-md-12" src={`https://www.africabeting.com/ghana/#/roulette?partnerID=100001${authorize}`}></iframe>
         <div className="no-results-container sb-spinner" style={{display:!loading && 'none'}}>

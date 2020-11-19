@@ -82,7 +82,7 @@ export default class Franchice extends PureComponent {
                         <div className="inline- col-sm-12">
                             <div className="inline-content col-sm-6" style={{ paddingRight: "20px", borderRight: "1px solid #ccc" }}>
                                 <div className="layui-form-item">
-                                    <h1 style={{ fontWeight: 700, marginTop: "30px" }}>Macau Gambling Market Franchise Program</h1>
+                                    <h1 style={{ fontWeight: 700, marginTop: "30px" }}>Corisbet Gambling Franchise Program</h1>
                                 </div>
                                 <div className="layui-form-item">
                                     <p><b>Join us to enjoy</b></p>
@@ -91,7 +91,7 @@ export default class Franchice extends PureComponent {
                                         <li>Amazing turnover.</li>
                                         <li>100% Support.</li>
                                     </ul>
-                                    <p style={{ marginTop: "20px" }}><b>Share your shop on the Macau Gambling Market money map now!</b></p>
+                                    <p style={{ marginTop: "20px" }}><b>Share your shop on the Corisbet Gambling money map now!</b></p>
                                     <ul >
                                         <li>To learn more about how you can start your franchise, simply fill in the form beside and click Send!</li>
                                         <li>Once you have submitted your details one of our helpful team members will revert to you.</li>

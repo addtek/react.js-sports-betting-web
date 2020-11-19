@@ -136,7 +136,7 @@
     border : none
 }
 .provider-list .active,.category .active{
-    background-color: crimson !important;
+    background-color: #04343c !important;
     color:#fff !important;
 }
 .provider-list.toggle-hide{

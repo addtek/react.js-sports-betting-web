@@ -449,7 +449,7 @@ export default class RegisterFrom extends PureComponent {
                                             created ?
                                                 <div className={` ${formStep !== 2 ? 'animated fadeOut' : 'animated fadeIn'}`} di="second-form">
                                                     <p className="recaptcha-version-3" style={{ fontSize: '20px' }}>
-                                                        Thank You for joining Macau Gambling Market, Your Account was created successfully!
+                                                        Thank You for joining Corisbet Gambling, Your Account was created successfully!
                                             </p>
                                                     <span>Pleae check your Email and verify your account.</span>
                                                     <span style={{ fontSize: '20px' }}>Bet more, Win Big!!!</span>
