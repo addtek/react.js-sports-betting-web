@@ -46,7 +46,7 @@ export default class Wallet extends PureComponent {
     this.setState({ loadingMethods: true });
     $api.paymentOptions(
       ({ data }) => {
-        if (data.status == 200) {
+        if (data.status === 200) {
           this.setState({ paymentOptions: data.data, loadingMethods: false });
         } else {
           this.setState({ loadingMethods: false });
@@ -58,7 +58,7 @@ export default class Wallet extends PureComponent {
     );
     $api.withdrawalOptions(
       ({ data }) => {
-        if (data.status == 200) {
+        if (data.status === 200) {
           this.setState({ withdrawalOptions: data.data, loadingMethods: false });
         } else {
           this.setState({ loadingMethods: false });
@@ -109,14 +109,14 @@ export default class Wallet extends PureComponent {
       } = this.state,
       $time = moment().format("YYYY-MM-DD H:mm:ss"),
       $hash = calcMD5(
-        `AuthToken${AuthToken}uid${uid}email${email}type${openedItem}amount${amount}${
+        `AuthToken${AuthToken}uid${uid}email${email}type${paymentOptions[openedItem].id}amount${amount}${
           telcoType === 2 ? `voucher${voucher}` : ""
         }time${$time}${this.props.appState.$publicKey}`
       );
     let p = {
-      pay_type: openedItem,
+      pay_type: paymentOptions[openedItem].id,
       amount: amount,
-      type: openedItem,
+      type: paymentOptions[openedItem].id,
       email: email,
       uid: uid,
       external_acc: externalAcc,
@@ -151,16 +151,16 @@ export default class Wallet extends PureComponent {
       } = this.state,
       $time = moment().format("YYYY-MM-DD H:mm:ss"),
       $hash = calcMD5(
-        `AuthToken${AuthToken}uid${uid}email${email}withdrawaltype${openedItem}amount${amount}password${password}time${$time}${this.props.appState.$publicKey}`
+        `AuthToken${AuthToken}uid${uid}email${email}withdrawaltype${withdrawalOptions[openedItem].id}amount${amount}password${password}time${$time}${this.props.appState.$publicKey}`
       );
     let p = {
-      withdrawaltype: openedItem,
+      withdrawaltype: withdrawalOptions[openedItem].id,
       password: password,
       amount: amount,
       email: email,
       uid: uid,
-      pay_type: openedItem,
-      type: openedItem,
+      pay_type: withdrawalOptions[openedItem].id,
+      type: withdrawalOptions[openedItem].id,
       external_acc: externalAcc,
       type_alias: withdrawalOptions[openedItem].alias,
       AuthToken: AuthToken,
@@ -236,7 +236,7 @@ export default class Wallet extends PureComponent {
           </div>
           <div className="sorter">
             <div
-              className={formType == 1 ? "active" : ""}
+              className={formType === 1 ? "active" : ""}
               onClick={() => {
                 this.changeForm(1);
               }}
@@ -245,7 +245,7 @@ export default class Wallet extends PureComponent {
               <span>Deposit </span>
             </div>
             <div
-              className={formType == 2 ? "active" : ""}
+              className={formType === 2 ? "active" : ""}
               onClick={() => {
                 this.changeForm(2);
               }}
@@ -262,12 +262,12 @@ export default class Wallet extends PureComponent {
                             <span className="btn-preloader sb-preloader"></span>
                           </div>
               :
-          paymentOptions.map((paymentmethod,key) => (
+          paymentOptions.map((paymentmethod,index) => (
             <>
               <div key={paymentmethod.alias+"DP"} className="deposit" style={{borderTopWidth:"5px",borderTopColor:paymentmethod.themecolor,transition:"height .5s linear"}}>
                 <div className="">
                   <div className="deposit-type ">
-                    <div className="header" onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem==paymentmethod.id?null:paymentmethod.id}))}>
+                    <div className="header" onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem===index?null:index}))}>
                       <div className="type-logo col-sm-2">
                         <img src={paymentmethod.icon} />
                       </div>
@@ -281,7 +281,7 @@ export default class Wallet extends PureComponent {
                     </div>
                     <div className="deposit-type-content">
                       <div className="instruction-form col-sm-8">
-                        <div className="conditions"  onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem==paymentmethod.id?null:paymentmethod.id}))}>
+                        <div className="conditions"  onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem===index?null:index}))}>
                           <div className="cons">
                             <div className="icon-sb-success"></div>
                             <div>
@@ -321,7 +321,7 @@ export default class Wallet extends PureComponent {
                             </div>
                           )}
                         </div>
-                        {openedItem === paymentmethod.id&&
+                        {openedItem === index&&
                         <>
                         <div className="deposit-summary"style={{backgroundColor:paymentmethod.themecolor}}>
                           <div>
@@ -385,7 +385,7 @@ export default class Wallet extends PureComponent {
                                   <div className="sb-login-form-wrapper">
                                     <div
                                       className={`form ${
-                                        openedItem !== paymentmethod.id
+                                        openedItem !== index
                                           ? "animated fadeOut"
                                           : "fadeIn animated"
                                       }`}
@@ -520,7 +520,7 @@ export default class Wallet extends PureComponent {
             <div key={paymentmethod.alias+"W"} className="deposit" style={{borderTopWidth:"5px",borderTopColor:paymentmethod.themecolor,transition:"height .5s linear"}}>
               <div className="">
                 <div className="deposit-type ">
-                  <div className="header" onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem==paymentmethod.id?null:paymentmethod.id}))}>
+                  <div className="header" onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem===key?null:key}))}>
                     <div className="type-logo col-sm-2">
                       <img src={paymentmethod.icon} />
                     </div>
@@ -534,7 +534,7 @@ export default class Wallet extends PureComponent {
                   </div>
                   <div className="deposit-type-content">
                     <div className="instruction-form col-sm-8">
-                      <div className="conditions"  onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem==paymentmethod.id?null:paymentmethod.id}))}>
+                      <div className="conditions"  onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem===key?null:key}))}>
                         <div className="cons">
                           <div className="icon-sb-success"></div>
                           <div>
@@ -574,13 +574,13 @@ export default class Wallet extends PureComponent {
                           </div>
                         )} */}
                       </div>
-                      {openedItem === paymentmethod.id&&
+                      {openedItem === key&&
                       <>
                       <div className="deposit-summary"style={{backgroundColor:paymentmethod.themecolor}}>
                         <div>
                           <div>
                             <span>
-                              {paymentmethod.alias.toLowerCase() == "btc"
+                              {paymentmethod.alias.toLowerCase() === "btc"
                                 ? `Total ${profile.currency}`
                                 : "Amount"}{" "}
                               to be Withdrawn
@@ -611,7 +611,7 @@ export default class Wallet extends PureComponent {
                           <div>
                             <span>
                               Total{" "}
-                              {paymentmethod.alias.toLowerCase() == "btc"
+                              {paymentmethod.alias.toLowerCase() === "btc"
                                 ? "BTC to be recieved"
                                 : "Amount"}{" "}
                             </span>
@@ -638,7 +638,7 @@ export default class Wallet extends PureComponent {
                                 <div className="sb-login-form-wrapper">
                                   <div
                                     className={`form ${
-                                      openedItem !== paymentmethod.id
+                                      openedItem !== key
                                         ? "animated fadeOut"
                                         : "fadeIn animated"
                                     }`}

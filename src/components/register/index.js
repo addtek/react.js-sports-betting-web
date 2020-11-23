@@ -58,8 +58,7 @@ export default class RegisterFrom extends PureComponent {
         this.currencies = [
             { value: "GBP", name: "UK Sterling(GBP)" },
             { value: "EUR", name: "Euro(EUR)" },
-            { value: "Yuan", name: "Chinese(Yuan)" },
-            { value: "Yen", name: "Japanese(Yen)" },
+            { value: "CFA", name: "West African CFA franc(CFA)" },
             { value: "USD", name: "US Dollar(USD)" }
         ]
         this.security_questions = [
