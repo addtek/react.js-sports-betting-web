@@ -36,6 +36,8 @@ import Deposit from '../deposit';
 import Withdrawal from '../Withdrawal';
 import PageNotFound from '../404';
 import SkypeBetting from '../skypebetting';
+import { PaymentSuccess } from '../payment/success';
+import { PaymentFailed } from '../payment/failed';
 const $api = API.getInstance()
 
 export default class Main extends PureComponent {
@@ -1921,6 +1923,12 @@ handlePageInactiveExpired(){
                 />
                 <Route path="/skypebetting"
                   render={(props)=><SkypeBetting {...props}/>}
+                />
+                <Route path="/payment/success"
+                  render={(props)=><PaymentSuccess {...props}/>}
+                />
+                <Route path="/payment/cancel"
+                  render={(props)=><PaymentFailed {...props}/>}
                 />
                 <Route path="*"
                   render={(props)=><PageNotFound/>}
