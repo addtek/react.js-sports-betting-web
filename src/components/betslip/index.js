@@ -933,7 +933,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                             <div className="sb-input-inner-label">
                               <input placeholder="0" type="text" value={betStake} onChange={(e) => this.setBetStake(e)} autoComplete='off'/>
 
-                              <span>{config.currency}</span>
+                              <span>{this.props.profile.currency}</span>
                             </div>
                           </div>
                         </div>

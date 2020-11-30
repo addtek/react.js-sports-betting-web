@@ -142,8 +142,8 @@ export default class AccModal extends PureComponent{
                           </div>
                             }
                           <div className="account-popup-buttons">
-                                  <a className="btn btn1" onClick={this.confirmClaim.bind(this)}>Yes {claimData.type ===2 &&' Withdraw'}</a>
-                                  <a className="btn btn1 cancel" onClick={this.cancelClaim}>Cancel</a>
+                                  <a  href=" " className="btn btn1" onClick={this.confirmClaim.bind(this)}>Yes {claimData.type ===2 &&' Withdraw'}</a>
+                                  <a href=" " className="btn btn1 cancel" onClick={this.cancelClaim}>Cancel</a>
                           </div>
                       </div>
                   </div>
@@ -152,7 +152,7 @@ export default class AccModal extends PureComponent{
                   <div className="account-popup-container container-no-background">
                       <div className="account-popup-header">
                          <span className={`${depositWithdraw?.status==200?"icon-sb-success":"icon-sb-error"}`}></span>
-                         <span>{depositWithdraw?.status==200?"Success": "Falied"}</span>
+                         <span>{depositWithdraw?.status===200?"Success": "Falied"}</span>
                     </div>
 
                       <div className="account-popup-body-container">
@@ -167,7 +167,7 @@ export default class AccModal extends PureComponent{
                       </div>}
                           <div className="account-popup-buttons">
                                   {/* <a className="btn btn1" onClick={this.confirmClaim.bind(this)}>Yes {claimData.type ===2 &&' Withdraw'}</a> */}
-                                  <a className="btn btn1 cancel" onClick={()=>{this.openInNewTab(depositWithdraw.url);this.cancelDepositDialog()}}>Okay</a>
+                                  <a href= " " className="btn btn1 cancel" onClick={()=>{this.openInNewTab(depositWithdraw.url);this.cancelDepositDialog()}}>Okay</a>
                           </div>
                       </div>
                   </div>

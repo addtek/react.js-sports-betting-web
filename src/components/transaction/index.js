@@ -218,7 +218,7 @@ export default class Transactions extends PureComponent {
                           <div className="bet-details">
                             <div className="date">{moment(history.date).format('ddd, D MMM YYYY')}</div>
                             <div className="id">{history.type==='Withdraw' || history.type==='Deposit'?history.paycode:history.id}</div>
-                            <div className="stake">{history.amount}  {config.currency}</div>
+                            <div className="stake">{history.amount}  {this.props.profile.currency}</div>
                             <div className={`type cms-jcon-${history.type}`}><span style={{ paddingLeft: '5px' }}>{history.type}</span></div>
                             <div className={`state`}><span style={{ paddingLeft: '5px' }}>{history.status}</span></div>
   
