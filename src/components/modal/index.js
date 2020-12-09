@@ -167,7 +167,7 @@ export default class AccModal extends PureComponent{
                       </div>}
                           <div className="account-popup-buttons">
                                   {/* <a className="btn btn1" onClick={this.confirmClaim.bind(this)}>Yes {claimData.type ===2 &&' Withdraw'}</a> */}
-                                  <a href= " " className="btn btn1 cancel" onClick={()=>{this.openInNewTab(depositWithdraw.url);this.cancelDepositDialog()}}>Okay</a>
+                                  <a className="btn btn1 cancel" onClick={()=>{this.openInNewTab(depositWithdraw.url);this.cancelDepositDialog()}}>Okay</a>
                           </div>
                       </div>
                   </div>
