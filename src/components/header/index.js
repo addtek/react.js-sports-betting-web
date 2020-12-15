@@ -4,13 +4,12 @@ import './header.css'
 import logo from '../../images/logo.png'
 import moment from 'moment-timezone'
 import { allActionDucer } from '../../actionCreator'
-import ReCAPTCHA from "react-google-recaptcha"
-import { SEARCHING_GAME, SPORTSBOOK_ANY, MODAL, LANG } from '../../actionReducers'
-import {expiredRecaptcha,onSubmit, updateBrowserHistoryState, setCookie, dataStorage} from '../../common'
+import { SPORTSBOOK_ANY, MODAL, LANG } from '../../actionReducers'
+import {updateBrowserHistoryState, setCookie, dataStorage} from '../../common'
 import {withRouter} from 'react-router-dom'
-import {Transition} from 'react-spring/renderprops'
 import API from '../../services/api'
 import HeaderAds from './headerAds';
+import Lang from '../../containers/Lang';
 const $api = API.getInstance()
  class Header extends PureComponent {
     constructor(props) {
@@ -145,61 +144,8 @@ const $api = API.getInstance()
         this.setState({showRecaptcha:false})
       }
     render() {
-        const { appState, profile, searchDataC,searchData, searching, activeView, Prematch, Live, checkResult, searchingTicket,site_recaptch_key,config,oddType } = this.props,{showHeaderAds,time,showRecaptcha,ads}= this.state, searchGame = (event) => {
-            var d = {}, type = activeView === 'Live' ? Live : Prematch
-            d[appState.lang] = event.target.value
-            if (event.target.value.length > 2) {
-
-                this.props.dispatch(allActionDucer(SEARCHING_GAME, { searchData: {}, searching: true }))
-                this.props.sendRequest({
-                    command: "get",
-                    params: {
-                        source: "betting",
-                        what: { sport: [], region: [], competition: [], game: "type start_ts team1_name team1_id team2_name team2_id id".split(" ") },
-                        where: {
-                            sport: { type: { "@ne": 1 } }, game: {
-                                type: { "@in": type }, "@or": [{
-                                    team1_name: {
-                                        "@like": d
-                                    }
-                                }, {
-                                    team2_name: {
-                                        "@like": d
-                                    }
-                                }],
-                            }
-                        },
-                        subscribe: false
-                    }, rid: 6
-
-                })
-                let s = {
-                    source: "betting",
-                    what: {
-                        competition: [],
-                        region: ["alias","name","id"],
-                        game: ["type", "start_ts", "finish_ts","team1_name", "team2_name", "id"],
-                        sport: ["id", "name", "alias"]
-                    },
-                    where: {
-                        competition: {
-                            name: {
-                                "@like": d
-                            }
-                        }
-                    }
-                };
-                this.props.sendRequest({
-                    command: "get",
-                    params: s, rid: "6.5"
-
-                })
-            } else {
-                this.props.dispatch(allActionDucer(SEARCHING_GAME, { searchData: {}, searching: false }))
-            }
-        }
-        let searchResult={game:[],competition:[]},hasGameResult = Object.keys(searchData).length > 0 && Object.keys(searchData.sport).length > 0,hasCompetionsResult=Object.keys(searchDataC).length > 0 && Object.keys(searchDataC.sport).length > 0,
-        emptyResult=((Object.keys(searchData).length > 0 && Object.keys(searchData.sport).length < 1) ||( Object.keys(searchDataC).length > 0 && Object.keys(searchDataC.sport).length < 1))
+        const { appState, profile, searchDataC,searchData, appTheme, oddType } = this.props,{showHeaderAds,time,ads}= this.state
+        let searchResult={game:[],competition:[]},hasGameResult = Object.keys(searchData).length > 0 && Object.keys(searchData.sport).length > 0,hasCompetionsResult=Object.keys(searchDataC).length > 0 && Object.keys(searchDataC.sport).length > 0
 
         if (hasGameResult) {
             searchResult.game=[]
@@ -398,10 +344,10 @@ const $api = API.getInstance()
                                         </div>
                                     </div> */}
                                     {/* <div className="link"><NavLink exact to=""><span>Home</span></NavLink></div> */}
-                                    <div className="link"><NavLink  to="/sports/prematch"><span>Sports</span></NavLink></div>
-                                    <div className="link"><NavLink  to="/sports/live"><span>In-Play</span></NavLink></div>
-                                    <div className="link"><NavLink to="/sports/results"><span>Game Results</span></NavLink></div>
-                                    <div className="link"><NavLink to="/skypebetting"><span>Skype Betting</span></NavLink></div>
+                                    <div className="link"><NavLink  to="/sports/prematch"><span><Lang word={"Sports"}/></span></NavLink></div>
+                                    <div className="link"><NavLink  to="/sports/live"><span><Lang word={"In-Play"}/></span></NavLink></div>
+                                    <div className="link"><NavLink to="/sports/results"><span><Lang word={"Game Results"}/></span></NavLink></div>
+                                    <div className="link"><NavLink to="/skypebetting"><span><Lang word={"Skype Betting"}/></span></NavLink></div>
                                     {/* <div className="link new"><NavLink to="/roulette"><span className="text-warning" style={{fontWeight:"900"}}>Roulette</span></NavLink></div>
                                     <div className="link"><NavLink to="/live-casino"><span>Live Casino</span></NavLink></div>
                                     <div className="link"><NavLink to="/slot-games"><span>Slot Games</span></NavLink></div> */}
@@ -556,10 +502,10 @@ const $api = API.getInstance()
                                         !appState.isLoggedIn ?
                                         <React.Fragment>
                                             <div className="login" onClick={()=>this.openFormModal('login')}>
-                                                <button>sign in</button>
+                                                <button><Lang word={"sign in"}/></button>
                                             </div>
                                             <div className="register" onClick={()=>this.openFormModal('register')}>
-                                                <button>Register</button>
+                                                <button><Lang word={"Register"}/></button>
                                             </div>
                                         </React.Fragment>
                                         :
@@ -572,23 +518,23 @@ const $api = API.getInstance()
                                                 <ul>
                                                     <li onClick={()=>this.openModal(1)}>
                                                         <span className="profile-icon icon-sb-edit-profile"></span>
-                                                        <span>Profile</span>
+                                                        <span><Lang word={"Profile"}/></span>
                                                     </li>
                                                     <li onClick={()=>this.openModal(2)}>
                                                         <span className="profile-icon icon-sb-my-bets"></span>
-                                                        <span>Bets History</span>
+                                                        <span><Lang word={"Bets History"}/></span>
                                                     </li>
                                                     <li onClick={()=>this.openModal(3)}>
                                                         <span className="profile-icon icon-sb-deposit"></span>
-                                                        <span>Deposit</span>
+                                                        <span><Lang word={"Deposit"}/></span>
                                                     </li>
                                                     <li onClick={()=>this.openModal(3,2)}>
                                                         <span className="profile-icon icon-sb-wallet"></span>
-                                                        <span>Withdrawal</span>
+                                                        <span><Lang word={"Withdrawal"}/></span>
                                                     </li>
                                                     <li onClick={()=>this.openModal(4)}>
                                                         <span className="profile-icon icon-sb-my-bets"></span>
-                                                        <span>Transactions</span>
+                                                        <span><Lang word={"Transactions"}/></span>
                                                     </li>
                                                     {/* <li onClick={()=>this.openModal(5)}>
                                                         <span className="profile-icon icon-sb-bonuses" style={{position:'relative'}}><i className="notice show-notice"></i></span>
@@ -600,16 +546,75 @@ const $api = API.getInstance()
                                                     </li> */}
                                                     <li onClick={()=>this.openModal(1,2)}>
                                                         <span className="profile-icon icon-sb-edit-profile"></span>
-                                                        <span>Change Password</span>
+                                                        <span><Lang word={"Change Password"}/></span>
                                                     </li>
                                                     <li onClick={this.logOut} className="logout">
                                                         <span className="profile-icon icon-sb-log-out"></span>
-                                                        <span>Log out</span>
+                                                        <span><Lang word={"Log out"}/></span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     }
+                                    <div className="top" style={{height:'30px'}}>
+                                        <div className="lang">
+                                            <div tabIndex="0" className="lang-custom-select custom-select">
+                                                <div className="selected-lang custom-select-style">
+                                                    <span className={`flag-icon ${appState.lang}-lang`}></span><span className="lang-text" data-lang={appState.lang === 'eng'? 'ENGLISH':appState.lang === 'fra'?'FRANÇAIS':''}></span>
+                                                    <i className="icon-icon-arrow-down"></i>
+                                                </div>
+
+                                                <ul className="custom-select-style custom-select-market-types">
+                                                    <li className={`selected-lang ${appState.lang === 'eng' && 'current'}`} onClick={()=>this.setLang({cookieValue:'en-gb',sysValue:'eng'})}> <span className="flag-icon eng-lang"></span><span className="lang-text" data-lang="English"></span></li>
+                                                    <li className={`selected-lang ${appState.lang === 'fra' && 'current'}`} onClick={()=>this.setLang({cookieValue:'fr-fr',sysValue:'fra'})}><span className="flag-icon fra-lang"></span><span className="lang-text" data-lang="Français"></span></li>
+                                                    {/* <li className={`selected-lang ${appState.lang === 'zhh' && 'current'}`} onClick={()=>this.setLang({cookieValue:'zh-cn',sysValue:'zhh'})}><span className="flag-icon zhh-lang"></span><span className="lang-text" data-lang="中文"></span></li> */}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div tabIndex="0" className="settings active">
+                                            <div className="settings-icon-container icon" >
+                                                <span className="icon-icon-settings"></span>
+                                            </div>
+                                            <div className="user-settings-menu">
+                                                
+                                                <ul>
+                                                    <li style={{fontSize:'16px',backgroundColor:"#e0e0e8"}}><span><Lang word={"ODDS"}/></span></li>
+                                                    <li className={`${oddType ==='decimal' && 'active'}`} onClick={()=>this.setOddType('decimal')}>
+                                                        <span><Lang word={"Decimal"}/></span>
+                                                    </li>
+                                                    <li className={`${oddType ==='fractional' && 'active'}`} onClick={()=>this.setOddType('fractional')}>
+                                                        <span><Lang word={"Fractional"}/></span>
+                                                    </li>
+                                                    <li className={`${oddType ==='american' && 'active'}`} onClick={()=>this.setOddType('american')}>
+                                                        <span><Lang word={"American"}/></span>
+                                                    </li>
+                                                    <li className={`${oddType ==='hongkong' && 'active'}`} onClick={()=>this.setOddType('hongkong')}>
+                                                        <span><Lang word={"HongKong"}/></span>
+                                                    </li>
+                                                    <li className={`${oddType ==='malay' && 'active'}`} onClick={()=>this.setOddType('malay')}>
+                                                        <span><Lang word={"Malay"}/></span>
+                                                    </li>
+                                                    <li className={`${oddType ==='indo' && 'active'}`} onClick={()=>this.setOddType('indo')}>
+                                                        <span><Lang word={"Indo"}/></span>
+                                                    </li>
+                                                    
+                                                </ul>
+                                                 {/* <ul>
+                                                    <li style={{fontSize:'16px',backgroundColor:"#e0e0e8"}}><span><Lang word={"THEMES"}/></span></li>
+                                                    <li className={`${appTheme ==='light' && 'active'}`} onClick={()=>this.changeTheme('light')}>
+                                                        <span><Lang word={"Light"}/></span>
+                                                    </li>
+                                                    <li className={`${appTheme ==='dracula' && 'active'}`} onClick={()=>this.changeTheme('dracula')}>
+                                                        <span><Lang word={"Dracula"}/> </span>
+                                                    </li>
+                                                   
+                                                </ul> */}
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </div>

@@ -6,6 +6,7 @@ import { BetHistoryLoader } from '../loader'
 import { getCookie } from '../../common'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
+import Lang from '../Lang'
 const $api = API.getInstance()
 export default class Bonuses extends PureComponent {
   constructor(props) {
@@ -330,11 +331,11 @@ export default class Bonuses extends PureComponent {
               <React.Fragment>
                 <div className="data" style={{ marginTop: '0' }}>
                   <div className="bet-details table-header">
-                    <div>Bonus Name</div>
-                    <div>Bonus Amount</div>
-                    <div>Real Amount</div>
-                    <div>Expiration Date</div>
-                    <div>Status</div>
+                    <div><Lang word={"Bonus Name"}/></div>
+                    <div><Lang word={"Bonus Amount"}/></div>
+                    <div><Lang word={"Real Amount"}/></div>
+                    <div><Lang word={"Expiration Date"}/></div>
+                    <div><Lang word={"Status"}/></div>
                   </div>
                   {
                     loadingHistory ?
@@ -354,17 +355,17 @@ export default class Bonuses extends PureComponent {
                                 <div className="stake">{history.BonusAmount}  </div>
                                 <div className={`type`}><span style={{ paddingLeft: '5px' }}>{history.RealAmount} {this.props.profile.currency}</span></div>
                                 <div className="date">{moment(history.ExpirationDate).format('ddd, D MMM YYYY')}</div>
-                                <div className={`state`}><span style={{ paddingLeft: '5px' }}>{history.Status}</span></div>
+                                <div className={`state`}><span style={{ paddingLeft: '5px' }}>{Lang(history.Status)}</span></div>
 
                               </div>
                             </div>
                           )
                         }) :
-                        <div className="empty-content"><span>There are no trasactions for the selected time period.</span></div>
+                        <div className="empty-content"><span><Lang word={"There are no trasactions for the selected time period"}/>.</span></div>
                   }
                 </div>
                 <div className="load-more" style={{ display: !bonusHistory.length && 'none', margin: 10 }}>
-                  <div style={{ margin: ' 0 auto' }} onClick={this.loadMore.bind(this)}>Show More</div>
+                  <div style={{ margin: ' 0 auto' }} onClick={this.loadMore.bind(this)}><Lang word={"Show More"}/></div>
                 </div>
               </React.Fragment>
               : null

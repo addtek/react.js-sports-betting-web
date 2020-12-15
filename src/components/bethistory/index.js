@@ -9,6 +9,8 @@ import { SPORTSBOOK_ANY, RIDS_PUSH } from '../../actionReducers'
 import  CashoutDialog  from '../../components/cashoutdialog'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
+import Lang from '../../containers/Lang';
+
 const $api = API.getInstance();
 export default class BetHistory extends PureComponent{
     constructor(props) {
@@ -243,7 +245,7 @@ export default class BetHistory extends PureComponent{
     }
     render() {
       const  {bets_history,loadingHistory, config} = this.props.sportsbook,{cashable_bet, status, type, bet_id, period,datepickerF,datepickerT,showCashoutDailog }= this.state,{ onClose,profile}= this.props
-      let dateRange = [], currentdate = moment(), bets = [], historyStats = { totalAmount: 0, betEventCounts: { unsettled: 0, lost: 0, won: 0, cashout: 0, returned: 0, all: 0 } }
+      let bets = [], historyStats = { totalAmount: 0, betEventCounts: { unsettled: 0, lost: 0, won: 0, cashout: 0, returned: 0, all: 0 } }
       // for (let m = 0; m < 5; m++) {
       //   var name = currentdate.clone(), mstart = currentdate.clone(), mend = currentdate.clone()
       //   dateRange.push({ name: name.format('MMMM YYYY'), end: mend.endOf('month').unix(), start: mstart.startOf('month').unix(), range: 'month' })
@@ -315,24 +317,24 @@ export default class BetHistory extends PureComponent{
               }
 
             <div className="filter">
-              <div className="header"><div className="title" style={{ padding: '15px' }}>My Bets History</div><div onClick={() => { onClose() }} className="close uci-close"></div></div>
+              <div className="header"><div className="title" style={{ padding: '15px' }}><Lang word={"My Bets History"}/></div><div onClick={() => { onClose() }} className="close uci-close"></div></div>
               <div className="sorter">
-                <div className={status === '-1' ? 'active' : ''} onClick={() => { this.setstatus('-1') }}> <span>All {historyStats.betEventCounts.all > 0 ? <span>{historyStats.betEventCounts.all}</span> : null}</span>
+                <div className={status === '-1' ? 'active' : ''} onClick={() => { this.setstatus('-1') }}> <span><Lang word={"All"}/> {historyStats.betEventCounts.all > 0 ? <span>{historyStats.betEventCounts.all}</span> : null}</span>
                 </div>
-                <div className={status === '0' ? 'active' : ''} onClick={() => { this.setstatus("0") }}><span>Open{historyStats.betEventCounts.unsettled > 0 ? <span>{historyStats.betEventCounts.unsettled}</span> : null}</span>
+                <div className={status === '0' ? 'active' : ''} onClick={() => { this.setstatus("0") }}><span><Lang word={"Open"}/>{historyStats.betEventCounts.unsettled > 0 ? <span>{historyStats.betEventCounts.unsettled}</span> : null}</span>
                 </div>
                 {/* <div className={status === '5' ? 'active' : ''} onClick={() => { this.setstatus(5) }}><span>Cashed-out{historyStats.betEventCounts.cashout > 0 ? <span>{historyStats.betEventCounts.cashout}</span> : null}</span>
                 </div> */}
-                <div className={status === '3' ? 'active' : ''} onClick={() => { this.setstatus("3") }}><span>Won{historyStats.betEventCounts.won > 0 ? <span>{historyStats.betEventCounts.won}</span> : null}</span>
+                <div className={status === '3' ? 'active' : ''} onClick={() => { this.setstatus("3") }}><span><Lang word={"Won"}/>{historyStats.betEventCounts.won > 0 ? <span>{historyStats.betEventCounts.won}</span> : null}</span>
                 </div>
-                <div className={status === '1' ? 'active' : ''} onClick={() => { this.setstatus("1") }}> <span>lost{historyStats.betEventCounts.lost > 0 ? <span>{historyStats.betEventCounts.lost}</span> : null}</span>
+                <div className={status === '1' ? 'active' : ''} onClick={() => { this.setstatus("1") }}> <span><Lang word={"lost"}/>{historyStats.betEventCounts.lost > 0 ? <span>{historyStats.betEventCounts.lost}</span> : null}</span>
                 </div>
-                <div className={status === '2' ? 'active' : ''} onClick={() => { this.setstatus("2") }}><span>Returned{historyStats.betEventCounts.returned > 0 ?
+                <div className={status === '2' ? 'active' : ''} onClick={() => { this.setstatus("2") }}><span><Lang word={"Returned"}/>{historyStats.betEventCounts.returned > 0 ?
                   <span>{historyStats.betEventCounts.returned}</span> : null}</span></div>
               </div>
               <div className="filter-input-container">
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
-                  <span>Bet ID</span>
+                  <span><Lang word={"Bet ID"}/></span>
                   <div className="sportsbook-input-value" style={{ padding: '0' }}>
                     <div className="sportsbook-search-input static">
                       <input autoComplete="off" placeholder="#" style={{ textAlign: 'unset', height: '36px' }} className="search-input ember-text-field ember-view" value={bet_id} onChange={(e) => { this.setBetID(e) }} ref={(el) => this.partialInput = el} />
@@ -340,13 +342,13 @@ export default class BetHistory extends PureComponent{
                   </div>
                 </div>
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
-                  <span>Bet Type</span>
+                  <span><Lang word={"Bet Type"}/></span>
                   <select name="betType" value={type} onChange={(e) => { this.setBetType(e) }}>
-                    <option value="-1">All</option>
-                    <option value="1">Single</option>
-                    <option value="2">Multiple</option>
-                    <option value="3">System</option>
-                    <option value="4">Chain</option>
+                    <option value="-1"><Lang word={"All"}/></option>
+                    <option value="1"><Lang word={"Single"}/></option>
+                    <option value="2"><Lang word={"Multiple"}/></option>
+                    <option value="3"><Lang word={"System"}/></option>
+                    <option value="4"><Lang word={"Chain"}/></option>
                   </select>
                   <i className="icon-icon-arrow-down"></i>
                 </div>
@@ -363,7 +365,7 @@ export default class BetHistory extends PureComponent{
                   <i className="icon-icon-arrow-down"></i>
                 </div> */}
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
-                  <span>Time Period</span>
+                  <span><Lang word={"Time Period"}/></span>
                   <select name="date" value={period} onChange={(e) => { this.setPeriod(e) }} >
                     {
                       this.upcomingGamesPeriods.map((range, ind) => {
@@ -376,7 +378,7 @@ export default class BetHistory extends PureComponent{
                   <i className="icon-icon-arrow-down"></i>
                 </div>
                 <div className="input-group" style={{ margin: '0 0 5px 0'}}>
-                  <span>Date Range</span>
+                  <span><Lang word={"Date Range"}/></span>
                   <div style={{display:"flex" }}>
                   <div className="datepicker-holder">
                     <input type="text" id="datepickerFH" onChange={(e) => { this.onDateChangeF(e) }} placeholder="From" autoComplete="off" />
@@ -390,7 +392,7 @@ export default class BetHistory extends PureComponent{
                 </div>
                 <div className="input-group" style={{ margin: '0 0 5px 5px' }}>
                   <div style={{ height: '38px' }}></div>
-                  <button className="search" onClick={() => { this.searchBetHistoryResult() }}><span>Show</span></button>
+                  <button className="search" onClick={() => { this.searchBetHistoryResult() }}><span><Lang word={"Show"}/></span></button>
                 </div>
               </div>
   
@@ -399,13 +401,13 @@ export default class BetHistory extends PureComponent{
             <div className="data" style={{ marginTop: '0' }}>
               <div className="bet-details table-header">
                 <div className="more"></div>
-                <div>Date</div>
-                <div>Bet ID</div>
-                <div>Bet Type</div>
-                <div>Stake</div>
-                <div>Odds</div>
-                <div>Win</div>
-                <div>Status</div>
+                <div><Lang word={"Date"}/></div>
+                <div><Lang word={"Bet ID"}/></div>
+                <div><Lang word={"Bet Type"}/></div>
+                <div><Lang word={"Stake"}/></div>
+                <div><Lang word={"Odds"}/></div>
+                <div><Lang word={"Win"}/></div>
+                <div><Lang word={"Status"}/></div>
               </div>
               {
                 loadingHistory ?
@@ -427,19 +429,19 @@ export default class BetHistory extends PureComponent{
                             <div className={`type cms-jcon-${this.betType[bet.type].toLowerCase()}`}><span style={{ paddingLeft: '5px' }}>{this.betType[bet.type]}</span></div>
                             <div className="stake">{bet.amount}  {profile.currency}</div>
                             <div className="odds">{bet.k}</div>
-                            <div className="win">{bet.payout > 0 ? bet.payout : bet.status === 0 ? <span><span style={{ display: 'block', lineHeight: '2' }}>Possible Win: </span><span style={{ display: 'block', lineHeight: '1' }}>{bet.possible_win}  {profile.currency}</span></span> : null}</div>
-                            <div className={`state ${bet.status === 4 || bet.status === 5 ? 'icon-sb-success' : bet.status === 3 ? 'icon-sb-error-pu' : bet.status === 1 ? 'icon-sb-unsettled' : bet.status === 0 ? 'icon-sb-unsettled' : bet.status == 2 ? 'icon-sb-returned' : ''}`}
-                              style={{ lineHeight: bet.hasOwnProperty('cash_out') ? '2' : '' }}><span style={{ paddingLeft: '5px' }}>{this.betState[bet.status]}</span>{bet.hasOwnProperty('cash_out') ?
+                            <div className="win">{bet.payout > 0 ? bet.payout : bet.status === 0 ? <span><span style={{ display: 'block', lineHeight: '2' }}><Lang word={"Possible Win"}/>: </span><span style={{ display: 'block', lineHeight: '1' }}>{bet.possible_win}  {profile.currency}</span></span> : null}</div>
+                            <div className={`state ${bet.status === 4 || bet.status === 5 ? 'icon-sb-success' : bet.status === 3 ? 'icon-sb-error-pu' : bet.status === 1 ? 'icon-sb-unsettled' : bet.status === 0 ? 'icon-sb-unsettled' : bet.status === 2 ? 'icon-sb-returned' : ''}`}
+                              style={{ lineHeight: bet.hasOwnProperty('cash_out') ? '2' : '' }}><span style={{ paddingLeft: '5px' }}>{Lang(this.betState[bet.status])}</span>{bet.hasOwnProperty('cash_out') ?
                                 <span onClick={(e) => { e.stopPropagation(); this.attemptCashout(bet) }} className="cashout" style={{ display: 'block', paddingLeft: '5px', width: 'auto', lineHeight: '1', marginRight: '5px' }} title={'cashout ' + bet.cash_out}><span style={{ lineHeight: '0', paddingLeft: '5px' }}>{bet.cash_out} {profile.currency}</span> </span> : null}</div>
   
                           </div>
                           <div className={`bet-selection ${this.state.openedBet === bet.id ? 'open' : ''}`}>
                             <div className="table-header">
-                              <div>Start Time</div>
-                              <div>Match</div>
-                              <div>Selection</div>
-                              <div>Odds</div>
-                              <div>status</div>
+                              <div><Lang word={"Start Time"}/></div>
+                              <div><Lang word={"Match"}/></div>
+                              <div><Lang word={"Selection"}/></div>
+                              <div><Lang word={"Odds"}/></div>
+                              <div><Lang word={"status"}/></div>
   
                             </div>
                             {
@@ -461,7 +463,7 @@ export default class BetHistory extends PureComponent{
                         </div>
                       )
                     }) :
-                    <div className="empty-content"><span>There are no bets for the selected time period.</span></div>
+                    <div className="empty-content"><span><Lang word={"There are no bets for the selected time period."}/></span></div>
               }
             </div>
           </div>

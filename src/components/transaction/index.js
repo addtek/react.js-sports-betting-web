@@ -6,6 +6,7 @@ import {BetHistoryLoader} from '../../components/loader'
 import {onSelect, getCookie, makeToast} from '../../common'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
+import Lang from '../Lang'
 const $api = API.getInstance()
 export default class Transactions extends PureComponent {
     constructor(props) {
@@ -114,7 +115,6 @@ export default class Transactions extends PureComponent {
       this.getBetHistory(p,more);
     }
     loadMore(){
-      const {currentPage}=this.state
       this.searchTransactionHistory(true)
     }
     setBetID(e) {
@@ -146,17 +146,17 @@ export default class Transactions extends PureComponent {
        this.setState(obj)
     }
     render() {
-      const  config = this.props.config,{loadingHistory, bet_type, bet_id, datepickerF,datepickerT,balanceHistory,nomoredata }= this.state,{ onClose}= this.props
+      const {loadingHistory, bet_type, bet_id, datepickerF,datepickerT,balanceHistory,nomoredata }= this.state,{ onClose}= this.props
       
       return (
 
           <div className="section-content col-sm-9">
              
             <div className="filter">
-              <div className="header"><div className="title" style={{ padding: '15px' }}>My Transaction History</div><div onClick={() => { onClose() }} className="close uci-close"></div></div>
+              <div className="header"><div className="title" style={{ padding: '15px' }}><Lang word={"My Transaction History"}/></div><div onClick={() => { onClose() }} className="close uci-close"></div></div>
               <div className="filter-input-container">
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
-                  <span>Transaction ID</span>
+                  <span><Lang word={"Transaction ID"}/></span>
                   <div className="sportsbook-input-value" style={{ padding: '0' }}>
                     <div className="sportsbook-search-input static">
                       <input autoComplete="off" placeholder="#" style={{ textAlign: 'unset', height: '36px' }} className="search-input ember-text-field ember-view" value={bet_id} onChange={(e) => { this.setBetID(e) }} ref={(el) => this.partialInput = el} />
@@ -164,21 +164,21 @@ export default class Transactions extends PureComponent {
                   </div>
                 </div>
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
-                  <span>Transaction Type</span>
+                  <span><Lang word={"Transaction Type"}/></span>
                   <select name="betType" value={bet_type} onChange={(e) => { this.setBetType(e) }}>
-                    <option value="ALL">All</option>
-                    <option value="0">Deposit</option>
-                    <option value="1">Withdrawal</option>
-                    <option value="2">Winnings</option>
-                    <option value="3">Activity</option>
-                    <option value="4">Bets</option>
-                    <option value="5">Rolled Back Bets</option>
+                    <option value="ALL"><Lang word={"All"}/></option>
+                    <option value="0"><Lang word={"Deposit"}/></option>
+                    <option value="1"><Lang word={"Withdrawal"}/></option>
+                    <option value="2"><Lang word={"Winnings"}/></option>
+                    <option value="3"><Lang word={"Activity"}/></option>
+                    <option value="4"><Lang word={"Bets"}/></option>
+                    <option value="5"><Lang word={"Rolled Back Bets"}/></option>
                   </select>
                   <i className="icon-icon-arrow-down"></i>
                 </div>
                   
                 <div className="input-group" style={{ margin: '0 0 5px 0'}}>
-                  <span>Date Range</span>
+                  <span><Lang word={"Date Range"}/></span>
                   <div style={{display:"flex" }}>
                   <div className="datepicker-holder">
                     <input type="text" id="datepickerFH" onChange={(e) => { this.onDateChangeF(e) }} placeholder="From" autoComplete="off" />
@@ -192,7 +192,7 @@ export default class Transactions extends PureComponent {
                 </div>
                 <div className="input-group" style={{ margin: '0 0 5px 5px' }}>
                   <div style={{ height: '38px' }}></div>
-                  <button className="search" onClick={() => { this.searchTransactionHistory() }}><span>Search</span></button>
+                  <button className="search" onClick={() => { this.searchTransactionHistory() }}><span><Lang word={"Search"}/></span></button>
                 </div>
               </div>
   
@@ -200,11 +200,11 @@ export default class Transactions extends PureComponent {
   
             <div className="data" style={{ marginTop: '0' }}>
               <div className="bet-details table-header">
-                <div>Date</div>
-                <div>Trans. ID</div>
-                <div>Amount</div>
-                <div>Trans Type</div>
-                <div>Status</div>
+                <div><Lang word={"Date"}/></div>
+                <div><Lang word={"Trans. ID"}/></div>
+                <div><Lang word={"Amount"}/></div>
+                <div><Lang word={"Trans Type"}/></div>
+                <div><Lang word={"Status"}/></div>
               </div>
               {
                 loadingHistory ?
@@ -220,7 +220,7 @@ export default class Transactions extends PureComponent {
                             <div className="id">{history.type==='Withdraw' || history.type==='Deposit'?history.paycode:history.id}</div>
                             <div className="stake">{history.amount}  {this.props.profile.currency}</div>
                             <div className={`type cms-jcon-${history.type}`}><span style={{ paddingLeft: '5px' }}>{history.type}</span></div>
-                            <div className={`state`}><span style={{ paddingLeft: '5px' }}>{history.status}</span></div>
+                            <div className={`state`}><span style={{ paddingLeft: '5px' }}>{Lang(history.status)}</span></div>
   
                           </div>
                         </div>
@@ -228,11 +228,11 @@ export default class Transactions extends PureComponent {
                     })
                    
                   :
-                    <div className="empty-content"><span>There are no trasactions for the selected time period.</span></div>
+                    <div className="empty-content"><span><Lang word={"There are no trasactions for the selected time period"}/>.</span></div>
               }
             </div>
             <div className="load-more" style={{display:(balanceHistory.length <10 || nomoredata)&& 'none',marginTop:10}}>
-                <div style={{margin:' 0 auto'}} onClick={this.loadMore.bind(this)}>Show More</div>
+                <div style={{margin:' 0 auto'}} onClick={this.loadMore.bind(this)}><Lang word={"Show More"}/></div>
             </div>
           </div>
 

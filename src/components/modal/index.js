@@ -174,8 +174,8 @@ export default class AccModal extends PureComponent{
                   <div className="sb-modal-backdrop" style={showWithdrawalDialog?{...showStyles}:{}}>
                   <div className="account-popup-container container-no-background">
                       <div className="account-popup-header" style={{backgroundColor:depositWithdraw?.status!==200&&"krimson"}}>
-                         <span className={`${depositWithdraw?.status==200?"icon-sb-success":"icon-sb-error"}`}></span>
-                         <span style={{marginLeft:'20px'}}>{depositWithdraw?.status==200?"Success": "Falied"}</span>
+                         <span className={`${depositWithdraw?.status===200?"icon-sb-success":"icon-sb-error"}`}></span>
+                         <span style={{marginLeft:'20px'}}>{depositWithdraw?.status===200?"Success": "Falied"}</span>
                     </div>
 
                       <div className="account-popup-body-container">

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/material.css'
 import API from '../../services/api'
+import Lang from '../Lang'
 const $api = API.getInstance()
 export default class RegisterFrom extends PureComponent {
     constructor(props) {
@@ -435,7 +436,7 @@ export default class RegisterFrom extends PureComponent {
                             <div className="liquid-child " style={{ overflow: 'visible' }}>
                                 <div data-step="sign-up" className="sb-login-step active ">
                                     <div className="title">
-                                        <span>Registration</span>
+                                        <span><Lang word={"Registration"}/></span>
                                     </div>
 
                                     <div className="sb-login-form-wrapper">
@@ -445,10 +446,10 @@ export default class RegisterFrom extends PureComponent {
                                             created ?
                                                 <div className={` ${formStep !== 2 ? 'animated fadeOut' : 'animated fadeIn'}`} di="second-form">
                                                     <p className="recaptcha-version-3" style={{ fontSize: '20px' }}>
-                                                        Thank You for joining Corisbet Gambling, Your Account was created successfully!
+                                                        <Lang word={"Thank You for joining Corisbet Gambling, Your Account was created successfully!"}/>
                                             </p>
                                                     {/* <span>Pleae check your Email and verify your account.</span> */}
-                                                    <span style={{ fontSize: '20px' }}>Bet more, Win Big!!!</span>
+                                                    <span style={{ fontSize: '20px' }}><Lang word={"Bet more, Win Big!!!"}/></span>
                                                 </div>
                                                 :
                                                 formStep === 1 && !created ?
@@ -463,11 +464,11 @@ export default class RegisterFrom extends PureComponent {
                                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                                             </div> <div className="field-message-container " style={{ right: 0, top: "-44px" }}>
                                                                                 <div className="field-message-wrapper">
-                                                                                    <span>{(firstname !== '' && !validateFullname(firstname)) ? 'First name must be minimum of 2 characters' : 'First name cannot be empty'}</span>
+                                                                                    <span>{<Lang word = {((firstname !== '' && !validateFullname(firstname)) ? 'First name must be minimum of 2 characters' : 'First name cannot be empty')}/>}</span>
                                                                                 </div></div></React.Fragment>}
                                                                     </div>
                                                                     <input autoFocus={true} name="firstname" value={firstname} className={`${(firstname !== '' && !validateFullname(firstname)) || firstnameEmpty ? 'error animated pulse' : ''} ember-text-field `} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
-                                                                    <span className={`placeholder ${firstname === '' && 'placeholder-inactive'}`}>First Name</span>
+                                                                    <span className={`placeholder ${firstname === '' && 'placeholder-inactive'}`}><Lang word={"First Name"}/></span>
 
                                                                 </div>
                                                             </div>
@@ -482,11 +483,11 @@ export default class RegisterFrom extends PureComponent {
                                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                                             </div><div className="field-message-container " style={{ right: 0, top: "-44px" }}>
                                                                                 <div className="field-message-wrapper">
-                                                                                    <span>{(lastname !== '' && !validateFullname(lastname)) ? 'Last name must be minimum of 2 characters' : 'Last name cannot be empty'}</span>
+                                                                                    <span>{< Lang word = {(lastname !== '' && !validateFullname(lastname)) ? 'Last name must be minimum of 2 characters' : 'Last name cannot be empty'}/>}</span>
                                                                                 </div></div></React.Fragment>}
                                                                     </div>
                                                                     <input name="lastname" value={lastname} className={`${(lastname !== '' && !validateFullname(lastname)) || lastnameEmpty ? 'error animated pulse' : ''} ember-text-field `} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
-                                                                    <span className={`placeholder ${lastname === '' && 'placeholder-inactive'}`}>Last Name</span>
+                                                                    <span className={`placeholder ${lastname === '' && 'placeholder-inactive'}`}><Lang word={"Last Name"}/></span>
 
                                                                 </div>
                                                             </div>
@@ -523,11 +524,11 @@ export default class RegisterFrom extends PureComponent {
                                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                                             </div> <div className="field-message-container " style={{ right: 0, top: "-44px" }}>
                                                                                 <div className="field-message-wrapper">
-                                                                                    <span>{(email !== '' && !validateEmail(email)) ? 'Invalid email format' : 'Email cannot be empty'}</span>
+                                                                                    <span>{<Lang word ={(email !== '' && !validateEmail(email)) ? 'Invalid email format' : 'Email cannot be empty'}/>}</span>
                                                                                 </div></div></React.Fragment>}
                                                                     </div>
                                                                     <input name="email" value={email} className={`${(email !== '' && !validateEmail(email)) || emailEmpty ? 'error animated pulse' : ''} ember-text-field `} type="email" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
-                                                                    <span className={`placeholder ${email === '' && 'placeholder-inactive'}`}>Email</span>
+                                                                    <span className={`placeholder ${email === '' && 'placeholder-inactive'}`}><Lang word={"Email"}/></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -557,7 +558,7 @@ export default class RegisterFrom extends PureComponent {
                                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                                             </div>  <div className="field-message-container " style={{ right: 0, top: "-44px" }}>
                                                                                 <div className="field-message-wrapper">
-                                                                                    <span>{(phoneNumber !== '' && !validatePhone(phoneNumber)) ? 'Phone number must be valid' : 'Phone number cannot be empty'}</span>
+                                                                                    <span>{<Lang word={(phoneNumber !== '' && !validatePhone(phoneNumber)) ? 'Phone number must be valid' : 'Phone number cannot be empty'}/>}</span>
                                                                                 </div></div></React.Fragment>}
                                                                     </div>
                                                                     <PhoneInput
@@ -682,11 +683,11 @@ export default class RegisterFrom extends PureComponent {
                                                                                     <span className={`warning icon-sb-warning icon`} ></span>
                                                                                 </div>  <div className="field-message-container " style={{ right: 0, top: "-44px" }}>
                                                                                     <div className="field-message-wrapper">
-                                                                                        <span>{(password !== '' && !validatePassword(password)) ? 'Password must be minimum of 8 characters' : 'Password cannot be empty'}</span>
+                                                                                        <span>{<Lang word ={(password !== '' && !validatePassword(password)) ? 'Password must be minimum of 8 characters' : 'Password cannot be empty'}/>}</span>
                                                                                     </div></div></React.Fragment>}
                                                                         </div>
                                                                         <input name="password" value={password} className={`${(password !== '' && !validatePassword(password)) || passwordEmpty ? 'error animated pulse' : ''} ember-text-field `} type={showPass ? 'text' : 'password'} onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
-                                                                        <span className={`placeholder ${password === '' && 'placeholder-inactive'}`}>Password</span>
+                                                                        <span className={`placeholder ${password === '' && 'placeholder-inactive'}`}><Lang word={"Password"}/></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -696,7 +697,7 @@ export default class RegisterFrom extends PureComponent {
                                                                 <div className="form-element empty">
                                                                     <div className="input-wrapper  show-password-switcher">
                                                                         <div className="field-icons-container ">
-                                                                            {CPassword !== ''||CPasswordEmpty && <div className="password-visibility-block" onClick={this.toggleShow} >
+                                                                            {(CPassword !== ''|| CPasswordEmpty) && <div className="password-visibility-block" onClick={this.toggleShow} >
                                                                                 <span className={`password-visibility icon ${showPass ? 'icon-sb-hide' : 'icon-sb-show'}`} ></span>
                                                                             </div>}
                                                                             {((CPassword !== '' && !validatePassword(CPassword)) || CPasswordEmpty) && <React.Fragment>
@@ -704,11 +705,11 @@ export default class RegisterFrom extends PureComponent {
                                                                                     <span className={`warning icon-sb-warning icon`} ></span>
                                                                                 </div>  <div className="field-message-container " style={{ right: 0, top: "-44px" }}>
                                                                                     <div className="field-message-wrapper">
-                                                                                        <span>{CPassword !== '' && password!==CPassword ? 'Password mismatch' : 'Retype password'}</span>
+                                                                                        <span>{<Lang word= {CPassword !== '' && password!==CPassword ? 'Password mismatch' : 'Retype password'}/>}</span>
                                                                                     </div></div></React.Fragment>}
                                                                         </div>
                                                                         <input name="CPassword" value={CPassword} className={`${(CPassword !== '' && password!==CPassword) || CPasswordEmpty ? 'error animated pulse' : ''} ember-text-field `} type={showPass ? 'text' : 'password'} onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
-                                                                        <span className={`placeholder ${CPassword === '' && 'placeholder-inactive'}`}>Re-type Password</span>
+                                                                        <span className={`placeholder ${CPassword === '' && 'placeholder-inactive'}`}><Lang word={"Re-type Password"}/></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -775,14 +776,14 @@ export default class RegisterFrom extends PureComponent {
                                                             </label>
 
                                                             <span className="">
-                                                                I agree to all
-                                                        <Link to="/general-terms-and-conditions">Terms &amp; Conditions</Link>
+                                                                <Lang word={"I agree to all"}/>
+                                                        <Link to="/general-terms-and-conditions"><Lang word={"Terms"}/> &amp; <Lang word={"Conditions"}/></Link>
 
                                                             &amp;
                                                             <Link to="/privacy-policy">
-                                                                    Privacy Policy
+                                                             <Lang word={"Privacy Policy"}/>
                                                             </Link>
-                                                        and I am over 18 years of age.<sup>*</sup>
+                                                        <Lang word={"and I am over 18 years of age"}/>.<sup>*</sup>
                                                             </span>
                                                         </div>
                                                         {/* <p className="recaptcha-version-3">
@@ -803,17 +804,17 @@ export default class RegisterFrom extends PureComponent {
                                                                 <div className="no-results-container sb-spinner">
                                                                     <span className="btn-preloader sb-preloader"></span>
                                                                 </div>
-                                                                : 'Create Account'}
+                                                                : <Lang word='Create Account'/>}
                                                         </button>
                                                     </div>
                                                     :
                                                     <div className={` ${formStep !== 2 ? 'animated fadeOut' : 'animated fadeIn'}`} di="second-form">
                                                         <p className="recaptcha-version-3" style={{ fontSize: '20px' }}>
-                                                            Verify your Phone Number
+                                                            <Lang word={"Verify your Phone Number"}/>
                                             </p>
-                                                        <span>We have sent an SMS code to the number : {phoneNumber}</span>
+                                                        <span><Lang word={"We have sent an SMS code to the number"}/> : {phoneNumber}</span>
                                                         <p onClick={this.back.bind(this)} className="recaptcha-version-3" style={{ cursor: 'pointer' }}>
-                                                            Not your phone number ?
+                                                            <Lang word={"Not your phone number"}/> ?
                                             </p>
                                                         <div className=" col-sm-12" style={{ display: 'flex', justifyContent: 'center' }}>
                                                             <div className="form-group ">
@@ -827,8 +828,8 @@ export default class RegisterFrom extends PureComponent {
                                                                             </div>
 
                                                                         </div>
-                                                                        <input autoFocus={true} name="sms" value={sms} className={`ember-text-field `} type={showPass ? 'text' : 'password'} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
-                                                                        <span className={`placeholder ${sms === '' && 'placeholder-inactive'}`}>SMS CODE</span>
+                                                                        <input autoFocus={true} name="sms" value={sms} className={`ember-text-field `} type={showPass ? 'text' : 'password'} onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" />
+                                                                        <span className={`placeholder ${sms === '' && 'placeholder-inactive'}`}><Lang word={"SMS CODE"}/></span>
 
                                                                     </div>
                                                                 </div>
@@ -842,14 +843,14 @@ export default class RegisterFrom extends PureComponent {
                                                                 <div className="no-results-container sb-spinner">
                                                                     <span className="btn-preloader sb-preloader"></span>
                                                                 </div>
-                                                                : 'Submit'}
+                                                                : <Lang word='Submit'/>}
                                                         </button>
                                                     </div>
                                         }
                                         <div className="footer">
-                                            <span>Already have an account? </span>
+                                            <span><Lang word={"Already have an account"}/>? </span>
                                             <span className="as-link step-change" data-step="sign-in" data-side="left">
-                                                <a onClick={() => { this.props.changeForm({ formType: 'login' }) }}> Sign In</a>
+                                                <a onClick={() => { this.props.changeForm({ formType: 'login' }) }}><Lang word={"Sign In"}/></a>
                                             </span>
                                         </div>
                                     </div>

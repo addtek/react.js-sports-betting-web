@@ -9,6 +9,7 @@ import {
   StatsBannerBasketBall,
   StatsBannerTennis
 } from '../statsBanner'
+import Lang from '../Lang'
 
 const $api = API.getInstance()
 export default class Controls extends PureComponent {
@@ -29,8 +30,7 @@ export default class Controls extends PureComponent {
 
   render() {
     const {activeGame, activeSport, activeView,
-      showPreview, loadMarket} = this.props.sportsbook,
-      {isLoggedIn} = this.props.appState
+      showPreview, loadMarket} = this.props.sportsbook
     let 
       currentLiveEventName = activeGame !== null && activeSport.alias.length && activeGame.last_event !== undefined && activeView === 'Live' ? stringReplacer(EventIDToNameMap[activeGame.last_event.type_id], [/([a-z])([A-Z])/g, /\b(\w*Period\w*)\b/g], ['$1 $2', '']) : '',
       currentLiveEventTeamName = activeGame !== null && activeGame.last_event !== undefined && activeView === 'Live' ? activeGame.last_event.side === '1' ? activeGame.team1_name : activeGame.last_event.side === '2' ? activeGame.team2_name : '' : '',
@@ -237,7 +237,7 @@ export default class Controls extends PureComponent {
                                                           </div>
                                                         </div>
                           
-                                                        <div id="ember93902" className="ember-view">
+                                                        <div className="ember-view">
                           
                                                           {
                           
@@ -275,7 +275,7 @@ export default class Controls extends PureComponent {
                                                                       </div>
                                                                     </div>
                                                                     : null}
-                                                                {activeSport.id === 4 && activeGame.last_event.type_id == '206' ?
+                                                                {activeSport.id === 4 && activeGame.last_event.type_id === '206' ?
                                                                   <div className="ball-container">
                                                                     <div className="ball"></div>
                                                                   </div>
@@ -346,7 +346,7 @@ export default class Controls extends PureComponent {
                                                                         <span className="line"></span>
                           
                                                                         <div className="text">
-                                                                          <span>Goal</span>
+                                                                          <span><Lang word={"Goal"}/></span>
                                                                         </div>
                                                                       </div>
                           
@@ -484,7 +484,7 @@ export default class Controls extends PureComponent {
                                                                 </div>
                           
                                                                 <div className="st-type">
-                                                                  <span>Dangerous Attack</span>
+                                                                  <span><Lang word={"Dangerous Attack"}/></span>
                                                                 </div>
                                                               </div> : null}
                           
@@ -508,7 +508,7 @@ export default class Controls extends PureComponent {
                                                                 </div>
                           
                                                                 <div className="st-type">
-                                                                  <span>Shot On Target</span>
+                                                                  <span><Lang word={"Shot On Target"}/></span>
                                                                 </div>
                                                               </div> : null}
                                                             {activeSport.id === 1 ?
@@ -531,7 +531,7 @@ export default class Controls extends PureComponent {
                                                                 </div>
                           
                                                                 <div className="st-type">
-                                                                  <span>Shot Off Target</span>
+                                                                  <span><Lang word={"Shot Off Target"}/></span>
                                                                 </div>
                                                               </div> : null}
                                                             {activeSport.id === 3 ?
@@ -554,7 +554,7 @@ export default class Controls extends PureComponent {
                                                                 </div>
                           
                                                                 <div className="st-type">
-                                                                  <span>Fouls</span>
+                                                                  <span><Lang word={"Fouls"}/></span>
                                                                 </div>
                                                               </div> : null}
                                                             {activeSport.id === 4 ?
@@ -577,7 +577,7 @@ export default class Controls extends PureComponent {
                                                                 </div>
                           
                                                                 <div className="st-type">
-                                                                  <span>Aces</span>
+                                                                  <span><Lang word={"Aces"}/></span>
                                                                 </div>
                                                               </div> : null}
                                                             {activeSport.id === 4 ?
@@ -600,7 +600,7 @@ export default class Controls extends PureComponent {
                                                                 </div>
                           
                                                                 <div className="st-type">
-                                                                  <span>Double Faults</span>
+                                                                  <span><Lang word={"Double Faults"}/></span>
                                                                 </div>
                                                               </div> : null}
                                                           </div>
@@ -616,7 +616,7 @@ export default class Controls extends PureComponent {
                   </div>
                   :
                   <div className="game-preview-empty">
-                    Game preview not available
+                    <Lang word={"Game preview not available"}/>
                     </div>}
               </div>
             </div>

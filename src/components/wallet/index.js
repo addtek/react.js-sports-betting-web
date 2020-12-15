@@ -9,6 +9,7 @@ import {
 import { calcMD5 } from "../../utils/jsmd5";
 import API from "../../services/api";
 import './style.css'
+import Lang from "../Lang";
 const $api = API.getInstance();
 export default class Wallet extends PureComponent {
   constructor(props) {
@@ -225,7 +226,7 @@ export default class Wallet extends PureComponent {
         <div className="filter">
           <div className="header">
             <div className="title" style={{ padding: "15px" }}>
-              My Wallet
+              <Lang word={"My Wallet"}/>
             </div>
             <div
               onClick={() => {
@@ -242,7 +243,7 @@ export default class Wallet extends PureComponent {
               }}
             >
               {" "}
-              <span>Deposit </span>
+              <span><Lang word={"Deposit"}/> </span>
             </div>
             <div
               className={formType === 2 ? "active" : ""}
@@ -250,7 +251,7 @@ export default class Wallet extends PureComponent {
                 this.changeForm(2);
               }}
             >
-              <span>Withdrawal</span>
+              <span><Lang word={"Withdrawal"}/></span>
             </div>
           </div>
         </div>
@@ -286,7 +287,7 @@ export default class Wallet extends PureComponent {
                             <div className="icon-sb-success"></div>
                             <div>
                               <span>
-                                Processing Time: {paymentmethod.processing}
+                                <Lang word={"Processing Time"}/>: {paymentmethod.processing}
                               </span>
                             </div>
                           </div>
@@ -294,21 +295,21 @@ export default class Wallet extends PureComponent {
                             <div className="icon-sb-success"></div>
                             <div>
                               <span>
-                                Min. Deposit amount: {paymentmethod.min_deposit}
+                                <Lang word={"Min. Deposit amount"}/>: {paymentmethod.min_deposit}
                               </span>
                             </div>
                           </div>
                           <div className="cons">
                             <div className="icon-sb-success"></div>
                             <div>
-                              <span>Fee: {paymentmethod.fee=="on"? paymentmethod.fee_rate+"%":"Free"}</span>
+                              <span><Lang word={"Fee"}/>: {paymentmethod.fee === "on"? paymentmethod.fee_rate+"%":Lang("Free")}</span>
                             </div>
                           </div>
                           <div className="cons">
                             <div className="icon-sb-success"></div>
                             <div>
                               <span>
-                                Max. Deposit amount: {paymentmethod.max_deposit}
+                                <Lang word={"Max. Deposit amount"}/>: {paymentmethod.max_deposit}
                               </span>
                             </div>
                           </div>
@@ -327,10 +328,10 @@ export default class Wallet extends PureComponent {
                           <div>
                             <div>
                               <span>
-                                {paymentmethod.alias.toLowerCase() == "btc"
+                                {paymentmethod.alias.toLowerCase() === "btc"
                                   ? `Total ${profile.currency}`
                                   : "Amount"}{" "}
-                                to be deposited
+                                <Lang word={"to be deposited"}/>
                               </span>
                             </div>
                             <div>
@@ -341,7 +342,7 @@ export default class Wallet extends PureComponent {
                           </div>
                           <div>
                             <div>
-                              <span>Fee</span>
+                              <span><Lang word={"Fee"}/></span>
                             </div>
                             <div>
                               <span>
@@ -357,10 +358,10 @@ export default class Wallet extends PureComponent {
                           <div>
                             <div>
                               <span>
-                                Total{" "}
-                                {paymentmethod.alias.toLowerCase() == "btc"
-                                  ? "BTC to be sent"
-                                  : "Amount"}{" "}
+                                <Lang word={"Total"}/>{" "}
+                                {paymentmethod.alias.toLowerCase() === "btc"
+                                  ? Lang("BTC to be sent")
+                                  : Lang("Amount")}
                               </span>
                             </div>
                             <div>
@@ -417,8 +418,8 @@ export default class Wallet extends PureComponent {
                                                     "placeholder-inactive"
                                                   }`}
                                                 >
-                                                  Enter {paymentmethod.alias}{" "}
-                                                  Number/Email
+                                                  <Lang word={"Enter"}/> {paymentmethod.alias}{" "}
+                                                  <Lang word={"Number/Email"}/>
                                                 </span>
                                               </div>
                                             </div>
@@ -454,7 +455,7 @@ export default class Wallet extends PureComponent {
                                                   "placeholder-inactive"
                                                 }`}
                                               >
-                                                Amount
+                                                <Lang word={"Amount"}/>
                                               </span>
                                             </div>
                                           </div>
@@ -485,7 +486,7 @@ export default class Wallet extends PureComponent {
                                           <div className="no-results-container sb-spinner">
                                             <span className="btn-preloader sb-preloader"></span>
                                           </div>
-                                        ) : (
+                                        ) : Lang(
                                           "Deposit"
                                         )}
                                       </button>
@@ -522,7 +523,7 @@ export default class Wallet extends PureComponent {
                 <div className="deposit-type ">
                   <div className="header" onClick={()=>this.setState((prev)=>({openedItem:prev.openedItem===key?null:key}))}>
                     <div className="type-logo col-sm-2">
-                      <img src={paymentmethod.icon} />
+                      <img alt="" src={paymentmethod.icon} />
                     </div>
                     <div className="type-logo col-sm-3">
 
@@ -539,7 +540,7 @@ export default class Wallet extends PureComponent {
                           <div className="icon-sb-success"></div>
                           <div>
                             <span>
-                              Processing Time: {paymentmethod.processing}
+                              <Lang word={"Processing Time"}/>: {paymentmethod.processing}
                             </span>
                           </div>
                         </div>
@@ -547,21 +548,21 @@ export default class Wallet extends PureComponent {
                           <div className="icon-sb-success"></div>
                           <div>
                             <span>
-                              Min. Withdrawal amount: {paymentmethod.min_withdrawal}
+                              <Lang word={"Min. Withdrawal amount"}/>: {paymentmethod.min_withdrawal}
                             </span>
                           </div>
                         </div>
                         <div className="cons">
                           <div className="icon-sb-success"></div>
                           <div>
-                            <span>Fee: {paymentmethod.fee=="on"? paymentmethod.widthrawal_fee+"%":"Free"}</span>
+                            <span><Lang word={"Fee"}/>: {paymentmethod.fee ==="on"? paymentmethod.widthrawal_fee+"%":"Free"}</span>
                           </div>
                         </div>
                         <div className="cons">
                           <div className="icon-sb-success"></div>
                           <div>
                             <span>
-                              Max. Withdrawal amount: {paymentmethod.max_withdrawal}
+                              <Lang word={"Max. Withdrawal amount"}/>: {paymentmethod.max_withdrawal}
                             </span>
                           </div>
                         </div>
@@ -581,9 +582,9 @@ export default class Wallet extends PureComponent {
                           <div>
                             <span>
                               {paymentmethod.alias.toLowerCase() === "btc"
-                                ? `Total ${profile.currency}`
-                                : "Amount"}{" "}
-                              to be Withdrawn
+                                ? Lang("Total")` ${profile.currency}`
+                                : Lang("Amount")}{" "}
+                              <Lang word={"to be Withdrawn"}/>
                             </span>
                           </div>
                           <div>
@@ -594,7 +595,7 @@ export default class Wallet extends PureComponent {
                         </div>
                         <div>
                           <div>
-                            <span>Fee</span>
+                            <span><Lang word={"Fee"}/></span>
                           </div>
                           <div>
                             <span>
@@ -610,9 +611,9 @@ export default class Wallet extends PureComponent {
                         <div>
                           <div>
                             <span>
-                              Total{" "}
+                              <Lang word={"Total"}/>{" "}
                               {paymentmethod.alias.toLowerCase() === "btc"
-                                ? "BTC to be recieved"
+                                ? "BTC " + Lang("to be recieved")
                                 : "Amount"}{" "}
                             </span>
                           </div>
@@ -669,9 +670,9 @@ export default class Wallet extends PureComponent {
                                                   "placeholder-inactive"
                                                 }`}
                                               >
-                                                Enter {paymentmethod.alias}{" "}
-                                               {paymentmethod.alias.toLowerCase() !==
-                                      "btc"?" Account Number/Email":"Wallet Address"}
+                                                <Lang word={"Enter"}/> {paymentmethod.alias}{" "}
+                                               {Lang(paymentmethod.alias.toLowerCase() !==
+                                      "btc"?"Account Number/Email":"Wallet Address")}
                                               </span>
                                             </div>
                                           </div>
@@ -707,7 +708,7 @@ export default class Wallet extends PureComponent {
                                                 "placeholder-inactive"
                                               }`}
                                             >
-                                              Amount
+                                              <Lang word={"Amount"}/>
                                             </span>
                                           </div>
                                         </div>
@@ -745,7 +746,7 @@ export default class Wallet extends PureComponent {
                                             }`}
                                           >
                                             {" "}
-                                            Password
+                                            <Lang word={"Password"}/>
                                           </span>
                                         </div>
                                       </div>
@@ -769,7 +770,7 @@ export default class Wallet extends PureComponent {
                                           <div className="no-results-container sb-spinner">
                                             <span className="btn-preloader sb-preloader"></span>
                                           </div>
-                                        ) : (
+                                        ) : Lang(
                                           "Withdraw"
                                         )}
                                       </button>

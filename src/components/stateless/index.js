@@ -1,5 +1,6 @@
 import React,{PureComponent} from 'react'
 import {stringReplacer} from '../../common'
+import Lang from '../Lang'
 export const CheckBox = (props) => {
     return (
       <label className="container">{props.text}
@@ -85,7 +86,7 @@ export const BetSlipNotification = (props) => {
         <div className="message-wrapper">
           {
             props.message?
-            <span className="message-text">{props.message}</span>
+            <span className="message-text">{Lang(props.message)}</span>
             :
             props.children
           }

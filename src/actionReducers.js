@@ -1,7 +1,7 @@
 const initialStates ={
     appState: {
         isReady: false,
-        lang:"eng",
+        lang:"fra",
         isLoggedIn: false,
         $publicKey : "ZDJSc2QzbDBlSG8yTmpZPQ==",
         $betKey:'8b3fb44d4bc2d5c5d8cd25891ba6e32c'

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Promotions from '../../views/promotions'
-import TNS from '../../views/tsNcons'
 import FAQ from '../../views/faq'
 import BettingRules from '../../views/betting-rules'
 import Withdrawal from '../../views/Withdrawal'
 import Deposit from '../../views/deposit'
 import BonusTerms from '../../views/bonus-terms'
+import Lang from '../../containers/Lang';
 
 export const Help = (props) => {
     const [formType, changeForm] = useState(1), onClose = props.onClose
@@ -17,17 +17,17 @@ export const Help = (props) => {
                     <div onClick={() => { onClose() }} className="close uci-close"></div>
                 </div>
                 <div className="sorter">
-                    <div className={formType == 1 ? 'active' : ''} onClick={() => { changeForm(1) }}> <span>Promotions </span>
+                    <div className={formType === 1 ? 'active' : ''} onClick={() => { changeForm(1) }}> <span><Lang word={"Promotions"}/> </span>
                     </div>
-                    <div className={formType == 2 ? 'active' : ''} onClick={() => { changeForm(2) }}><span>Betting Rules</span>
+                    <div className={formType === 2 ? 'active' : ''} onClick={() => { changeForm(2) }}><span><Lang word={"Betting Rules"}/></span>
                     </div>
-                    <div className={formType == 3 ? 'active' : ''} onClick={() => { changeForm(3) }}><span>Deposit</span>
+                    <div className={formType === 3 ? 'active' : ''} onClick={() => { changeForm(3) }}><span><Lang word={"Deposit"}/></span>
                     </div>
-                    <div className={formType == 4 ? 'active' : ''} onClick={() => { changeForm(4) }}><span>Withdrawal</span>
+                    <div className={formType === 4 ? 'active' : ''} onClick={() => { changeForm(4) }}><span><Lang word={"Withdrawal"}/></span>
                     </div>
-                    <div className={formType == 5 ? 'active' : ''} onClick={() => { changeForm(5) }}><span>FAQ</span>
+                    <div className={formType === 5 ? 'active' : ''} onClick={() => { changeForm(5) }}><span><Lang word={"FAQ"}/></span>
                     </div>
-                    <div className={formType == 6 ? 'active' : ''} onClick={() => { changeForm(6) }}><span>Bonus Terms</span>
+                    <div className={formType === 6 ? 'active' : ''} onClick={() => { changeForm(6) }}><span><Lang word={"Bonus Terms"}/></span>
                     </div>
                 </div>
             </div>

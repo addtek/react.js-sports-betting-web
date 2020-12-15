@@ -9,6 +9,7 @@ import {Transition} from 'react-spring/renderprops'
 
 import  './style.css'
 import { calcMD5 } from '../../utils/jsmd5'
+import Lang from '../Lang'
 const $api = API.getInstance()
 export default class BetSlip extends PureComponent {
 
@@ -800,17 +801,12 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
  return Number.parseFloat(totalOdds * (enableFreebet? freeBetStake.amount: this.getTotalStake()),10).toFixed(2).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,')
 }
   render() {
-    const { betMode, betSlipMode, activeGame, activeSport, activeView,
+    const { betMode, betSlipMode,
       betSelections, betStake, lowBalance, sys_bet_variant,
-      showBetSlipNoty, betInprogress, retrieveBookingLoading,showBetslipSettings,showTicketBetSearch,showPreview,checkResult,
-      retrieveBooking,betSlipNotyMsg,betSlipNotyType,oddType, acceptMode, enableEventSeletionBonus, bookingNumber, betFailed, isQuickBet, isOddChange, sportsbettingRules, config,authUser,freeBetStake,freeBets,enableFreebet,isBetslipExpanded } = this.props.sportsbook,
-      {isLoggedIn} = this.props.appState,profile= this.props.profile,{promoBannerLarge,promoBannerSmall}=this.state
+      showBetSlipNoty, betInprogress,showBetslipSettings,showTicketBetSearch,checkResult,betSlipNotyMsg,betSlipNotyType,oddType, acceptMode, enableEventSeletionBonus, bookingNumber, betFailed, isQuickBet, isOddChange, sportsbettingRules,authUser,freeBetStake,freeBets,enableFreebet,isBetslipExpanded } = this.props.sportsbook,
+      {isLoggedIn} = this.props.appState
     let newSelection = [], qualifiedSelectionCount = 0, selectionBonusPercentage = 0, min_variant = 2,
-      totalOdds = this.calculateTotalOdds(betSelections), win = 0, chainWinning = 0,
-      currentLiveEventName = activeGame !== null && activeSport.alias.length && activeGame.last_event !== undefined && activeView === 'Live' ? stringReplacer(EventIDToNameMap[activeGame.last_event.type_id], [/([a-z])([A-Z])/g, /\b(\w*Period\w*)\b/g], ['$1 $2', '']) : '',
-      currentLiveEventTeamName = activeGame !== null && activeGame.last_event !== undefined && activeView === 'Live' ? activeGame.last_event.side === '1' ? activeGame.team1_name : activeGame.last_event.side === '2' ? activeGame.team2_name : '' : '',
-      currentSet = activeGame !== null && activeGame.info !== undefined && activeView === 'Live' ? convertSetName()(activeGame.info.current_game_state, stringReplacer(activeSport.alias, [/\s/g], [''])) : '',
-      sportAlias = stringReplacer(activeSport.alias, [/\s/g, /'/g, /\d.+?\d/g, /\(.+?\)/g], ['', '', '', '']).toLowerCase();
+      totalOdds = this.calculateTotalOdds(betSelections), chainWinning = 0
     let betlen = null !== betSelections && undefined !== betSelections ? Object.keys(betSelections).length : 0
     this.sys_bet = []
     Object.keys(betSelections).forEach((sele, ind) => {      
@@ -856,7 +852,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
       if (b.order > a.order)
         return -1
 
-      return
+      return true
     })
     return (
    <div className="bsl-BetslipLoaderModule">
@@ -893,7 +889,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                  <div className="liquid-child" style={{ top: "0px", left: "0px" }}>
                     <div className={`betslip-settings`}>
                       <OddsType onChange={this.onOddsTypeChange} value={oddType} />
-                      {isLoggedIn && <OddsSettings onChange={this.onOddsSettingsChange} value={acceptMode} title={'Automatically accept odds.'} /> }
+                      {isLoggedIn && <OddsSettings onChange={this.onOddsSettingsChange} value={acceptMode} title={Lang('Automatically accept odds')} /> }
                     </div>
                   </div>
                  
@@ -910,7 +906,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
             betSlipMode === 2 && Object.keys(betSelections).length === 0 && isLoggedIn ?
               <div className="betslip-settings-container">
                 <div className="quick-bet-setting">
-                  <span>Quick Bet</span>
+                  <span><Lang word={"Quick Bet"}/></span>
                 
                   <label className="sb-on-off-button">
                     <input onChange={(e) => { this.useQuickBet(e) }} type="checkbox" />
@@ -927,7 +923,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                         <div className="betslip-quick-bet-container open">
                           <div className="betslip-stake-per-bet-container sb-bet-input-block stake-text">
                             <span>
-                              Quick Bet Stake...
+                             <Lang word={"Quick Bet Stake"}/>...
                                </span>
 
                             <div className="sb-input-inner-label">
@@ -981,22 +977,22 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                 <div className="betslip-tabs">
                   <div className="betslip-panel">
                     <select onChange={(e) => this.changeBetMode(e)} value={betMode}>
-                      <option value="1">Single</option>
-                      <option disabled={Object.keys(betSelections).length < 2} value="2" >Multiple</option>
-                      <option disabled={Object.keys(betSelections).length < 3 || Object.keys(betSelections).length > 16} value="3">System</option>
-                      <option disabled={Object.keys(betSelections).length < 2} value="4">Chain</option>
+                      <option value="1"><Lang word={"Single"}/></option>
+                      <option disabled={Object.keys(betSelections).length < 2} value="2" ><Lang word={"Multiple"}/></option>
+                      <option disabled={Object.keys(betSelections).length < 3 || Object.keys(betSelections).length > 16} value="3"><Lang word={"System"}/></option>
+                      <option disabled={Object.keys(betSelections).length < 2} value="4"><Lang word={"Chain"}/></option>
                     </select>
                     {betMode === 3  &&
                       <select onChange={(e) => this.setSysBetVariant(e)} value={JSON.stringify(sys_bet_variant || this.sys_bet[0])}>
                         {
                           this.sys_bet.map((sys, i) => {
-                            return <option key={i} disabled={Object.keys(betSelections).length < 2} value={JSON.stringify(sys)} >{sys.sys}({sys.bets} bets)</option>
+                            return <option key={i} disabled={Object.keys(betSelections).length < 2} value={JSON.stringify(sys)} >{sys.sys}({sys.bets} <Lang word={"bets"}/>)</option>
                           })
                         }
                       </select>
                       }
                     <div className="clear-all" onClick={() => this.removeAllBetSelections()}>
-                      <span>Remove All</span>
+                      <span><Lang word={"Remove All"}/></span>
                     </div>
                   </div>
                 </div>
@@ -1032,7 +1028,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                                     <div className="sb-event-overlay-info suspended-container">
                                       <div className="suspended-container-part">
                                         <span className="sb-event-overlay-icon icon-icon-locked-stream"></span>
-                                        <span className="sb-event-overlay-title">Suspended</span>
+                                        <span className="sb-event-overlay-title"><Lang word={"Suspended"}/></span>
                                       </div>
                                     </div>
                                   </div>
@@ -1077,7 +1073,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                                   <div className="sb-bet-input-block stake-text">
                                     <div className="stake-text ">
                                       <span>
-                                        Stake
+                                        <Lang word={"Stake"}/>
                                       </span>
 
                                     </div>
@@ -1107,7 +1103,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
 
                                   <div className="sb-bet-result  ">
                                     <div className="sb-bet-return top-border ">
-                                      <span>Possible Win:</span>
+                                      <span><Lang word={"Possible Win"}/>:</span>
                                       <span className="possible-win">{selection.singleStake !== "" ? (selection.singleStake * selection.price).toFixed(2) :enableFreebet? selection.price *freeBetStake.amount: 0}</span>
                                     </div>
                                   </div>
@@ -1126,7 +1122,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                       {(Object.keys(betSelections).length > 1 && betSlipMode === 2  && !enableFreebet) || (betSlipMode ===1 && Object.keys(betSelections).length > 1) ?
                         <div className="sb-bet-input-block stake-text">
                           <span>
-                            Stake {betMode === 1 || betMode === 3 ? 'Per Bet' : ''}
+                            <Lang word={"Stake"}/> {betMode === 1 || betMode === 3 ? 'Per Bet' : ''}
                           </span>
                           <div className="sb-input-inner-label">
                             <input id="betStake" placeholder="0" type="text" onChange={(e) => this.setBetStake(e)} autoComplete='off'/>
@@ -1138,13 +1134,13 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                       <div className="sb-bet-result">
                         {betMode === 1 || betMode === 3 ?
                           <div className="sb-bet-return">
-                            <span className="number-of-bets">Number of Bets:</span>
+                            <span className="number-of-bets"><Lang word={"Number of Bets"}/>:</span>
                             <span className="count-of-bets">{this.getTotalBets()}</span>
                           </div>
                           : null}
                         {betMode === 2 &&
                           <div className="sb-bet-return total">
-                            <span>Total Odds: </span>
+                            <span><Lang word={"Total Odds"}/>: </span>
                             <span>{oddConvert({
                               main: {
                                 decimalFormatRemove3Digit: 0,
@@ -1159,7 +1155,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                           }
 
                         <div className="sb-bet-return">
-                          <span>Total Stake:</span>
+                          <span><Lang word={"Total Stake"}/>:</span>
                           {
                             enableFreebet?
                             <span>{freeBetStake.amount}</span>
@@ -1169,24 +1165,24 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                         </div>
 
                         <div className="sb-bet-return top-border">
-                          <span>{betMode !== 1 ? 'Possible ' : 'Total '} Win:</span>
+                          <span>{betMode !== 1 ? 'Possible ' : 'Total '} <Lang word={"Win"}/>:</span>
                           <span className="possible-win">{betMode === 3 ? (this.sys_bet_result.win).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,') : betMode === 4 ? Number.parseFloat(chainWinning).toFixed(2).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,') : this.getPossibleWinAmount()}</span>
                         </div>
                         {selectionBonusPercentage > 0 && enableEventSeletionBonus && betSlipMode === 2 && <React.Fragment>
                           <div className="sb-bet-return bonus">
-                            <span>Bonus Percentage:</span>
+                            <span><Lang word={"Bonus Percentage"}/>:</span>
                             <span className="possible-win">{selectionBonusPercentage} </span>
                           </div>
                           
                           <div className="sb-bet-return bonus">
-                            <span>Accumulator Bonus:</span>
+                            <span><Lang word={"Accumulator Bonus"}/>:</span>
                             <span className="possible-win">{parseFloat((totalOdds * this.getTotalStake()) * (selectionBonusPercentage / 100),10).toFixed(2).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,')} </span>
                           </div>
                           </React.Fragment>
                           }
                         {(selectionBonusPercentage > 0 && enableEventSeletionBonus && betSlipMode === 2) || enableFreebet ?
                           <div className="sb-bet-return bonus">
-                            <span>Total Win:</span>
+                            <span><Lang word={"Total Win"}/>:</span>
                             <span className="possible-win">{this.getTotalWinAmount(selectionBonusPercentage)} </span>
                           </div>
                          :null}
@@ -1220,7 +1216,7 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                               <div className="no-results-container sb-spinner">
                                 <span className="btn-preloader sb-preloader"></span>
                               </div>
-                              :   'Accept changes and place bets!'
+                              :   Lang('Accept changes and place bets!')
                             }</button>:
                             isOddChange?
                             <button onClick={(e) => { this.onOddsSettingsChange({target:{value:2}}); this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isOddChange: false })) }} className={`placebet ${betSlipMode !== 2 ? 'betslip-hide' : ''} ${betInprogress ? 'progress' : ''}`} disabled={(betSlipMode == 2 && isLoggedIn && lowBalance && !enableFreebet) || (betStake == 0 && !enableFreebet) || betInprogress}> {
@@ -1228,19 +1224,19 @@ this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{ isBetslipExpanded: !this.pro
                               <div className="no-results-container sb-spinner">
                                 <span className="btn-preloader sb-preloader"></span>
                               </div>
-                              :   'Accept Odds changes!'
+                              :   Lang('Accept Odds changes!')
                             }</button>:
                         <button onClick={() => { this.placeBet() }} className={`placebet ${betSlipMode !== 2 ? 'betslip-hide' : ''} ${betInprogress ? 'progress' : ''}`} disabled={(this.hasLowBalance(betStake) && !enableFreebet) || ((betStake === 0 || betStake==='') && !enableFreebet) || betInprogress}> {
                           betInprogress ?
                             <div className="no-results-container sb-spinner">
                               <span className="btn-preloader sb-preloader"></span>
                             </div>
-                            : 'Place Bet'
+                            : Lang('Place Bet')
                         }</button>
                         : (betSlipMode === 2 && !isLoggedIn && Object.keys(betSelections).length) ?
                           <button onClick={() => this.props.dispatch(allActionDucer(MODAL,{accVerifyOpen:true,
                             formType:'login'}))} className={`signintobet ${betSlipMode !== 2 ? 'betslip-hide' : ''} ${betInprogress ? 'progress' : ''}`}>
-                            Sign in to place bet</button>
+                            <Lang word={"Sign in to place bet"}/></button>
                             :null
                     }
                   </div>

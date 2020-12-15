@@ -117,7 +117,7 @@ export default class News extends PureComponent{
                             </div>
                             </div>
                             </Route>
-                            <Route path={`${this.props.match.path}/:newsID`} render={(props)=> <NewsRead {...props}/>}/>
+                            <Route path={`${this.props.match.path}/:newsID`} render={(props)=> <NewsRead {...props}/>
                         </Switch>
                         <div className="news-nav col-sm-3">
                             <div className="top-news col-sm-12">

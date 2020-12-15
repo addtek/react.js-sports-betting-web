@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import {onFormInputFocus,onFormInputFocusLost} from '../../common'
+import Lang from '../../containers/Lang';
  export default class LoginForm extends PureComponent{
   constructor(props){
     super(props)
@@ -35,9 +36,8 @@ toggleShow(){
             <span onClick={this.props.onClose} className="sb-login-form-close icon-icon-close-x"></span>
               <div className="liquid-container ember-view" ><div className="liquid-child ember-view" style={{ top: "0px", left: "0px", opacity: "1" }}>
                 <div data-step="sign-in" id="ember129058" className="sb-login-step active ember-view">  <div className="title">
-                  <span>Sign In</span>
+                  <span><Lang word={"Sign In"}/></span>
                 </div>
-  
                   <div className="sb-login-form-wrapper">
                     <div className="social-icons">
                     </div>
@@ -46,8 +46,7 @@ toggleShow(){
                           <div className="input-wrapper ">
   
                           <input disabled={attemptingLogin} name="email" value={email} className="ember-text-field ember-view" autoFocus={true} type="text" onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" onChange={this.onInputChange}/>
-                              <span className="placeholder placeholder-inactive">E-Mail</span>
-  
+                              <span className="placeholder placeholder-inactive"><Lang word={"E-Mail"}/></span>
                           </div>
                         </div>
                       </div>
@@ -62,7 +61,7 @@ toggleShow(){
   
                             </div>
                             <input disabled={attemptingLogin} name="password" value={password} required className="ember-text-field ember-view" type={showPass?"text":"password"} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" onChange={this.onInputChange}/>
-                            <span className="placeholder placeholder-inactive">Password</span>
+                            <span className="placeholder placeholder-inactive"><Lang word={"Password"}/></span>
   
                           </div>
                         </div>
@@ -75,21 +74,22 @@ toggleShow(){
                             <div className="no-results-container sb-spinner">
                               <span className="btn-preloader sb-preloader"></span>
                             </div>
-                            : 'Login'}
+                            : <Lang word='Login'/>}
                       </button>
 
                     <div className="footer">
                       <div>
-                        <span  className="as-link forgot-password step-change" data-step="forgot-password" data-side="left"><a onClick={()=>this.props.changeForm({formType:'forgotpassword'})}>Forgot password?</a></span>
+                        <span  className="as-link forgot-password step-change" data-step="forgot-password" data-side="left"><a onClick={()=>this.props.changeForm({formType:'forgotpassword'})}><Lang word={"Forgot password"}/>?</a></span>
                       </div>
                       <div>
-                        <span  className="as-link step-change" data-step="sign-up" data-side="left"><a onClick={()=>{this.props.changeForm({formType:'register'})}}>Register</a></span>
+                        <span  className="as-link step-change" data-step="sign-up" data-side="left"><a onClick={()=>{this.props.changeForm({formType:'register'})}}><Lang word={"Register"}/></a></span>
                       </div>
                     </div>
                   </div>
   
                 </div>
-              </div></div>    </div>
+              </div></div>    
+              </div>
           </div>
          )
      }
