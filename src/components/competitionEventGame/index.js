@@ -4,7 +4,8 @@ import moment from 'moment'
  import {
   stringReplacer,
   convertSetName,
-  updateBrowserHistoryState
+  updateBrowserHistoryState,
+  getCookie
 } from '../../common'
 import {withRouter} from 'react-router-dom'
 class CompetitionEventGame extends PureComponent{
