@@ -5,6 +5,7 @@ import Footer from '../../components/footer';
 import SportsBook from '../../containers/sportsbook';
 import $ from 'jquery';
 import moment from 'moment';
+import 'moment/locale/fr'
 import { allActionDucer, appStateActionDucer } from '../../actionCreator';
 import { APPREADY, AUTHENTICATED, LOGIN, PARTNER_CONFIG, SPORT_COMPETITION, SPORTSBOOK_ANY, RIDS_PUSH, LOGOUT, PROFILE, MODAL, PROFILE_EMPTY, LANG } from '../../actionReducers';
 import * as appConfig from '../../appconfig.json';

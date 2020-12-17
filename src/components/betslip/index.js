@@ -1,5 +1,6 @@
 import React,{PureComponent} from 'react'
 import moment from 'moment'
+import 'moment/locale/fr'
 import { BetSlipNotification, OddsType, OddsSettings } from '../stateless'
 import API from '../../services/api'
 import { oddConvert, dataStorage, betModeChange, stringReplacer, EventIDToNameMap, convertSetName, getCookie } from '../../common'

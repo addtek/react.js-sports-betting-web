@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react' 
 import LiveBtn from '../liveBtn'
 import moment from 'moment'
+import 'moment/locale/fr'
  import {
   stringReplacer,
   convertSetName,

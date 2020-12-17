@@ -1,5 +1,6 @@
 import React,{PureComponent} from 'react'
 import moment from 'moment'
+import 'moment/locale/fr'
 import LiveEventSound from '../sound'
 import API from '../../services/api'
 import {stringReplacer, EventIDToNameMap, convertSetName } from '../../common'

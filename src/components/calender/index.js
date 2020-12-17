@@ -8,6 +8,7 @@ import {
 import {CheckBox} from '../stateless'
 import Controls from '../../containers/controls'
 import moment from 'moment' ;
+import 'moment/locale/fr'
 import { SPORTSBOOK_ANY } from '../../actionReducers'
 import { allActionDucer } from '../../actionCreator'
 export default class Calendar extends PureComponent {

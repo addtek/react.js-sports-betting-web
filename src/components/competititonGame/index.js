@@ -3,6 +3,7 @@ import GameEventBtn from '../gameEventBtn'
 import {CompetitionLoader} from '../loader'
 import {getCookie, stringReplacer} from '../../common'
 import moment from 'moment'
+import 'moment/locale/fr'
 export default class CompetitionGame extends PureComponent {
     constructor(props) {
       super(props);

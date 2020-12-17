@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import {Loader} from '../../components/loader'
 import moment from 'moment'
+import 'moment/locale/fr'
 export default class CashoutDialog extends PureComponent {
     constructor(props) {
       super(props)

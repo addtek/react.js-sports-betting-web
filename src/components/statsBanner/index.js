@@ -5,6 +5,7 @@ import {
   
   } from '../../common'
    import moment from 'moment'
+   import 'moment/locale/fr'
 export class StatsBannerSoccer extends Component {
 
     render() {
