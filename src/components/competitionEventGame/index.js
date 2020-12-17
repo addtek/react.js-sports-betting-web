@@ -22,7 +22,20 @@ class CompetitionEventGame extends PureComponent{
       this.onDragStart = this.onDragStart.bind(this)
       this.onDragEnd = this.onDragEnd.bind(this)
       this.addClass = this.addClass.bind(this)
-      moment.locale(this.props.appState.lang.substr(0,2))
+      this.language_cookie = getCookie('think_var')
+      if (this.language_cookie) {
+        if (this.language_cookie === "fr-fr")
+        { 
+        moment.locale('fr'); // 'fr'
+      }
+        else if (this.language_cookie === "en-gb")
+       { 
+        moment.locale('en'); // 'en'
+      }
+       else if(this.language_cookie === "zh-cn"){
+        moment.locale('zh'); // 'chinese'
+       }
+      }
     }
     loadMarkets(game,sport,region,competition){
        const activeView = this.props.activeView

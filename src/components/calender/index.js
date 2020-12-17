@@ -29,7 +29,20 @@ export default class Calendar extends PureComponent {
       this.calenderDays = [0, 1, 2, 3, 4, 5, 6]
       this.addToExcluded = this.addToExcluded.bind(this)
       this.rids= {...this.props.sportsbook.rids}
-      moment.locale(this.props.appState.lang.substr(0,2))
+      this.language_cookie = getCookie('think_var')
+      if (this.language_cookie) {
+        if (this.language_cookie === "fr-fr")
+        { 
+        moment.locale('fr'); // 'fr'
+      }
+        else if (this.language_cookie === "en-gb")
+       { 
+        moment.locale('en'); // 'en'
+      }
+       else if(this.language_cookie === "zh-cn"){
+        moment.locale('zh'); // 'chinese'
+       }
+      }
     }
     componentWillUnmount(){
       this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{data: [],competitionData:[],marketData:[],multiviewGames:[],populargamesData:{},activeGame:{},activeCompetition:{},sport:null,region:null,game:null,competition:null}))

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import * as $ from 'jquery'
 import 'jquery-ui/ui/widgets/datepicker'
-import  moment from 'moment-timezone'
+import  moment from 'moment'
 import {BetHistoryLoader} from '../../components/loader'
 import {onSelect, getCookie, makeToast} from '../../common'
 import API from '../../services/api'

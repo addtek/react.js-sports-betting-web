@@ -3,7 +3,7 @@ import Controls from '../../containers/controls'
 import CompetitionGame from '../competititonGame'
 import { withRouter } from 'react-router-dom'
 import { MarketLoader } from '../loader'
-import { stringReplacer } from '../../common'
+import { getCookie, stringReplacer } from '../../common'
 import moment from 'moment'
 import { allActionDucer } from '../../actionCreator'
 import { SPORTSBOOK_ANY } from '../../actionReducers'
@@ -35,7 +35,20 @@ class EventView extends PureComponent{
     this.loadMultiSelectData = this.loadMultiSelectData.bind(this)
   }
   componentDidMount() {
-    moment.locale(this.props.appState.lang.substr(0,2))
+    this.language_cookie = getCookie('think_var')
+    if (this.language_cookie) {
+      if (this.language_cookie === "fr-fr")
+      { 
+      moment.locale('fr'); // 'fr'
+    }
+      else if (this.language_cookie === "en-gb")
+     { 
+      moment.locale('en'); // 'en'
+    }
+     else if(this.language_cookie === "zh-cn"){
+      moment.locale('zh'); // 'chinese'
+     }
+    }
     let { view, sport, region, competition, game } = this.props.match.params, { sessionData } = this.props.sportsbook, locState = this.props.location.state ? this.props.location.state : window.history.state && !window.history.state.hasOwnProperty('key') ? window.history.state : {}, newState = { activeView: view.charAt(0).toUpperCase() + view.slice(1) }
     if (sport)
       newState.sport = locState.sport
