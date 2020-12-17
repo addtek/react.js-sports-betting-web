@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import GameEventBtn from '../gameEventBtn'
 import {CompetitionLoader} from '../loader'
-import {stringReplacer} from '../../common'
+import {getCookie, stringReplacer} from '../../common'
 import moment from 'moment'
 export default class CompetitionGame extends PureComponent {
     constructor(props) {
@@ -13,7 +13,20 @@ export default class CompetitionGame extends PureComponent {
         data: [],
         gamesArr: []
       };
-      moment.locale(this.props.appState.lang.substr(0,2))
+      this.language_cookie = getCookie('think_var')
+      if (this.language_cookie) {
+        if (this.language_cookie === "fr-fr")
+        { 
+        moment.locale('fr'); // 'fr'
+      }
+        else if (this.language_cookie === "en-gb")
+       { 
+        moment.locale('en'); // 'en'
+      }
+       else if(this.language_cookie === "zh-cn"){
+        moment.locale('zh'); // 'chinese'
+       }
+      }
     }
     sortDateByDayASC (a, b){
   
