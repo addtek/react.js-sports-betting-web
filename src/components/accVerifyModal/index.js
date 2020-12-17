@@ -9,7 +9,6 @@ import API from '../../services/api'
 import  {calcMD5} from '../../utils/jsmd5'
 import moment from 'moment';
 import 'moment/locale/fr'
-import 'moment/locale/en'
 import { setCookie } from '../../common'
 const $api = API.getInstance()
 
