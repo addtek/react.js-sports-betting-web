@@ -196,6 +196,7 @@ export default class BetSlip extends PureComponent {
     // $api.getBanners({bid:30},this.bannersResultSmall,this.onError.bind(this))
   }
   componentDidMount() {
+    moment.locale(this.props.appState.lang.substr(0,2))
     const {betSelections,
       betMode,
       sys_bet_variant} = this.props.sportsbook

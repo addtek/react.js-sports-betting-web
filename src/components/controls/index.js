@@ -21,7 +21,7 @@ export default class Controls extends PureComponent {
       playSound:false,
     }
 
-
+    moment.locale(this.props.appState.lang.substr(0,2))
   }
 
   playSound() {

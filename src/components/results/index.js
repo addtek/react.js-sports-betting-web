@@ -33,6 +33,7 @@ export default class Results extends PureComponent {
       this.liveChecked = this.liveChecked.bind(this)
     }
     componentDidMount() {
+      moment.locale(this.props.appState.lang.substr(0,2))
       const { datepickerF, datepickerT } = this.state
       $("#datepickerF").datepicker({ maxDate: '0', defaultDate: new Date(datepickerF), onSelect: function () { onSelect('datepickerF') },changeMonth: true, });
       $("#datepickerT").datepicker({ maxDate: '0', defaultDate: new Date(datepickerT), onSelect: function () { onSelect('datepickerT') },      changeYear: true });

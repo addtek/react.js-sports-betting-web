@@ -29,6 +29,7 @@ export default class Calendar extends PureComponent {
       this.calenderDays = [0, 1, 2, 3, 4, 5, 6]
       this.addToExcluded = this.addToExcluded.bind(this)
       this.rids= {...this.props.sportsbook.rids}
+      moment.locale(this.props.appState.lang.substr(0,2))
     }
     componentWillUnmount(){
       this.props.dispatch(allActionDucer(SPORTSBOOK_ANY,{data: [],competitionData:[],marketData:[],multiviewGames:[],populargamesData:{},activeGame:{},activeCompetition:{},sport:null,region:null,game:null,competition:null}))

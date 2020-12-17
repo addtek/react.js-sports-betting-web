@@ -33,6 +33,7 @@ export default class Transactions extends PureComponent {
       this.getBetHistory = this.getBetHistory.bind(this)
       this.onDateChangeF = this.onDateChangeF.bind(this)
       this.onDateChangeT = this.onDateChangeT.bind(this)
+      moment.locale(this.props.appState.lang.substr(0,2))
     }
     componentDidMount() {
       const {datepickerF,datepickerT} = this.state

@@ -43,6 +43,7 @@ export default class BetHistory extends PureComponent{
       this.getBetAutoCashout = this.getBetAutoCashout.bind(this)
       this.createAutoCashOutRule = this.createAutoCashOutRule.bind(this)
        this.rids = this.props.sportsbook.rids
+       moment.locale(this.props.appState.lang.substr(0,2))
     }
     componentDidMount() {
        const{sessionData}=this.props.sportsbook

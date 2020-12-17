@@ -13,6 +13,7 @@ export default class CompetitionGame extends PureComponent {
         data: [],
         gamesArr: []
       };
+      moment.locale(this.props.appState.lang.substr(0,2))
     }
     sortDateByDayASC (a, b){
   

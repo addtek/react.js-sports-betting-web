@@ -35,6 +35,7 @@ class EventView extends PureComponent{
     this.loadMultiSelectData = this.loadMultiSelectData.bind(this)
   }
   componentDidMount() {
+    moment.locale(this.props.appState.lang.substr(0,2))
     let { view, sport, region, competition, game } = this.props.match.params, { sessionData } = this.props.sportsbook, locState = this.props.location.state ? this.props.location.state : window.history.state && !window.history.state.hasOwnProperty('key') ? window.history.state : {}, newState = { activeView: view.charAt(0).toUpperCase() + view.slice(1) }
     if (sport)
       newState.sport = locState.sport

@@ -10,6 +10,7 @@ import  {calcMD5} from '../../utils/jsmd5'
 import moment from 'moment';
 import { setCookie } from '../../common'
 const $api = API.getInstance()
+
 export default class AccVerifyModal extends PureComponent{
     constructor(props){
         super(props)
@@ -18,6 +19,8 @@ export default class AccVerifyModal extends PureComponent{
         this.onResetSuccess = this.onResetSuccess.bind(this)
         this.changeFormType = this.changeFormType.bind(this)
         this.onCreatedTimeout = null
+
+        moment.locale(this.props.appState.lang.substr(0,2))
     }
 
     login(data){

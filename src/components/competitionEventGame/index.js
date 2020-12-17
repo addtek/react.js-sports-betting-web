@@ -22,6 +22,7 @@ class CompetitionEventGame extends PureComponent{
       this.onDragStart = this.onDragStart.bind(this)
       this.onDragEnd = this.onDragEnd.bind(this)
       this.addClass = this.addClass.bind(this)
+      moment.locale(this.props.appState.lang.substr(0,2))
     }
     loadMarkets(game,sport,region,competition){
        const activeView = this.props.activeView
