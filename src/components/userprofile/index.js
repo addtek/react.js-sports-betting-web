@@ -8,6 +8,7 @@ import {  PROFILE, MODAL } from '../../actionReducers'
 import {validateEmail,validateFullname,validatePassword,validateUsername} from '../../utils/index'
 import { calcMD5 } from '../../utils/jsmd5'
 import API from '../../services/api'
+import Lang from '../../containers/Lang'
 const $api = API.getInstance()
 export default class UserProfile extends PureComponent{
     constructor(props){
@@ -124,13 +125,13 @@ export default class UserProfile extends PureComponent{
             <div className="section-content col-sm-9">
                 <div className="filter">
                 <div className="header">
-                    <div className="title" style={{ padding: '15px' }}>My Profile</div>
+                    <div className="title" style={{ padding: '15px' }}><Lang word="My Profile"/></div>
                     <div onClick={() => { onClose() }} className="close uci-close"></div>
                 </div>
                 <div className="sorter">
-                <div className={formType == 1? 'active' : ''} onClick={() => { this.changeForm(1) }}> <span>Edit Profile </span>
+                <div className={formType == 1? 'active' : ''} onClick={() => { this.changeForm(1) }}> <span><Lang word="Edit Profile"/> </span>
                 </div>
-                <div className={formType == 2 ? 'active' : ''} onClick={() => { this.changeForm(2) }}><span>Change Password</span>
+                <div className={formType == 2 ? 'active' : ''} onClick={() => { this.changeForm(2) }}><span><Lang word="Change Password"/></span>
                 </div>
                 </div>
                 </div>
@@ -144,12 +145,12 @@ export default class UserProfile extends PureComponent{
                                     profile.completeInfo?
                                     <div style={{height:'40px',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
                                         <span className="icon-sb-success" style={{fontSize:'30px'}}></span>
-                                        <span style={{fontSize:'14px',paddingLeft:'20px'}}>Great, Your profile is complete!</span>
+                                        <span style={{fontSize:'14px',paddingLeft:'20px'}}><Lang word ="Great, Your profile is complete!"/></span>
                                     </div>
                                     :
                                     <div style={{height:'40px',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
                                         <span className="uci-warning" style={{fontSize:'30px',color: '#b6862e'}}></span>
-                                        <span style={{fontSize:'14px',paddingLeft:'20px',color: '#b6862e'}}>Complete your profile and get free bonus!</span>
+                                        <span style={{fontSize:'14px',paddingLeft:'20px',color: '#b6862e'}}><Lang word="Complete your profile and get free bonus!"/></span>
                                     </div>
                                 }
                             </div>
@@ -164,7 +165,7 @@ export default class UserProfile extends PureComponent{
                                                 <div className="form-element empty">
                                                     <div className="input-wrapper ">
                                                         <input value={profile.dialing_code+''+phoneNumber} className={`ember-text-field ember-view`} type="text" readOnly disabled/>
-                                                        <span className={`placeholder ${phoneNumber ==='' && 'placeholder-inactive'}`}>Phone Number</span>
+                                                        <span className={`placeholder ${phoneNumber ==='' && 'placeholder-inactive'}`}><Lang word="Phone Number"/></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,11 +180,11 @@ export default class UserProfile extends PureComponent{
                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                             </div> <div className="field-message-container ember-view" style={{right: 0, top: "-44px"}}>
                                                                 <div className="field-message-wrapper">
-                                                                    <span>Nickname must be minimum of 6 characters</span>
+                                                                    <span><Lang word="Nickname must be minimum of 6 characters"/></span>
                                                             </div></div></React.Fragment>}
                                                         </div>
                                                         <input name="username" value={username} className={`${(username !=='' && !validateUsername(username)) ||usernameEmpty? 'error animated pulse':''} ember-text-field ember-view`} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" readOnly={profile.completeInfo?true:false} disabled={profile.completeInfo?true:false}/>
-                                                        <span className={`placeholder ${username ==='' && 'placeholder-inactive'}`}>Nickname</span>
+                                                        <span className={`placeholder ${username ==='' && 'placeholder-inactive'}`}><Lang word ="Nickname"/></span>
 
                                                     </div>
                                                 </div>
@@ -198,11 +199,11 @@ export default class UserProfile extends PureComponent{
                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                             </div> <div className="field-message-container ember-view" style={{right: 0, top: "-44px"}}>
                                                                 <div className="field-message-wrapper">
-                                                                    <span>{(firstname !=='' && !validateFullname(firstname)) ? 'First name must be minimum of 2 characters': 'First name cannot be empty'}</span>
+                                                                    <span><Lang word ={(firstname !=='' && !validateFullname(firstname)) ? 'First name must be minimum of 2 characters': 'First name cannot be empty'}/></span>
                                                             </div></div></React.Fragment>}
                                                         </div>
                                                         <input name="firstname" value={firstname} className={`${(firstname !=='' && !validateFullname(firstname)) ||firstnameEmpty? 'error animated pulse':''} ember-text-field ember-view`} type="text" autoComplete="off" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" readOnly={profile.completeInfo?true:false} disabled={profile.completeInfo?true:false}/>
-                                                        <span className={`placeholder ${firstname ==='' && 'placeholder-inactive'}`}>First Name</span>
+                                                        <span className={`placeholder ${firstname ==='' && 'placeholder-inactive'}`}><Lang word ="First Name"/></span>
 
                                                     </div>
                                                 </div>
@@ -217,11 +218,11 @@ export default class UserProfile extends PureComponent{
                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                             </div><div className="field-message-container ember-view" style={{right: 0, top: "-44px"}}>
                                                                 <div className="field-message-wrapper">
-                                                                    <span>{(lastname !=='' && !validateFullname(lastname)) ? 'Last name must be minimum of 2 characters': 'Last name cannot be empty'}</span>
+                                                                    <span><Lang word ={(lastname !=='' && !validateFullname(lastname)) ? 'Last name must be minimum of 2 characters': 'Last name cannot be empty'}/></span>
                                                             </div></div></React.Fragment>}
                                                         </div>
                                                         <input name="lastname" value={lastname} className={`${(lastname !=='' && !validateFullname(lastname)) ||lastnameEmpty? 'error animated pulse':''} ember-text-field ember-view`} type="text" autoComplete="off"  onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" readOnly={profile.completeInfo?true:false} disabled={profile.completeInfo?true:false}/>
-                                                        <span className={`placeholder ${lastname ==='' && 'placeholder-inactive'}`}>Last Name</span>
+                                                        <span className={`placeholder ${lastname ==='' && 'placeholder-inactive'}`}><Lang word ="Last Name"/></span>
 
                                                     </div>
                                                 </div>
@@ -232,11 +233,11 @@ export default class UserProfile extends PureComponent{
                                                 <div className="form-element empty">
                                                     <div className="input-wrapper ">
                                                         <select name="gender" style={{padding: '18px 10px 0'}} value={gender} className={` ember-text-field ember-view`} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" disabled={profile.completeInfo?true:false}>
-                                                            <option value="U">Don't Specify</option>
-                                                            <option value="M">Male</option>
-                                                            <option value="F">Female</option>
+                                                            <option value="U"><Lang word="Don't Specify"/></option>
+                                                            <option value="M"><Lang word="Male"/></option>
+                                                            <option value="F"><Lang word ="Female"/></option>
                                                         </select>
-                                                        <span className={`placeholder ${gender ==='' && 'placeholder-inactive'}`}>Gender</span>
+                                                        <span className={`placeholder ${gender ==='' && 'placeholder-inactive'}`}><Lang word ="Gender"/></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,11 +251,11 @@ export default class UserProfile extends PureComponent{
                                                                 <span className={`warning icon-sb-warning icon`} ></span>
                                                             </div> <div className="field-message-container ember-view" style={{right: 0, top: "-44px"}}>
                                                                 <div className="field-message-wrapper">
-                                                                    <span>{(email !=='' && !validateEmail(email)) ? 'Invalid email format': 'Email cannot be empty'}</span>
+                                                                    <span><Lang word={(email !=='' && !validateEmail(email)) ? 'Invalid email format': 'Email cannot be empty'}/></span>
                                                             </div></div></React.Fragment>}
                                                         </div>
                                                         <input name="email" value={email} className={`${email !=='' && !validateEmail(email)? 'error animated pulse':''} ember-text-field ember-view`} type="text" onChange={(e) =>(profile.email===''||profile.email===null)&& this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" disabled={profile.completeInfo||(profile.email!==''&&profile.email!==null)?true:false} readOnly={profile.completeInfo||(profile.email!==''&&profile.email!==null)?true:false}/>
-                                                        <span className={`placeholder ${email ==='' && 'placeholder-inactive'}`}>Email </span>
+                                                        <span className={`placeholder ${email ==='' && 'placeholder-inactive'}`}><Lang word="Email"/> </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,7 +271,7 @@ export default class UserProfile extends PureComponent{
                                                             <option value="4">Firearms License</option>
                                                             <option value="5">Other</option>
                                                         </select>
-                                                        <span className={`placeholder ${document_type ==='' && 'placeholder-inactive'}`}>ID Type</span>
+                                                        <span className={`placeholder ${document_type ==='' && 'placeholder-inactive'}`}><lang word="ID Type"/></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -280,7 +281,7 @@ export default class UserProfile extends PureComponent{
                                                 <div className="form-element empty">
                                                     <div className="input-wrapper ">
                                                         <input name="idnumber" value={idnumber} className={`ember-text-field ember-view`} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" readOnly={profile.completeInfo?true:false} disabled={profile.completeInfo?true:false}/>
-                                                        <span className={`placeholder ${idnumber ==='' && 'placeholder-inactive'}`}>ID Card Number</span>
+                                                        <span className={`placeholder ${idnumber ==='' && 'placeholder-inactive'}`}><Lang word="ID Card Number"/></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -290,7 +291,7 @@ export default class UserProfile extends PureComponent{
                                                 <div className="form-element empty">
                                                     <div className="input-wrapper ">
                                                     <input type="text" id="datepickerBD" name="birth_date" onChange={(e) => { this.onDateChangeBD(e) }} autoComplete="off" className={`ember-text-field ember-view`} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} readOnly={profile.completeInfo?true:false} disabled={profile.completeInfo?true:false}/>
-                                                    <span className={`placeholder ${birth_date ==='' && 'placeholder-inactive'}`}>Date of Birth</span>
+                                                    <span className={`placeholder ${birth_date ==='' && 'placeholder-inactive'}`}><Lang word="Date of Birth"/></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -300,7 +301,7 @@ export default class UserProfile extends PureComponent{
                                                 <div className="form-element empty">
                                                     <div className="input-wrapper ">
                                                         <input name="address" value={address} className={`ember-text-field ember-view`} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" readOnly={profile.completeInfo?true:false} disabled={profile.completeInfo?true:false}/>
-                                                        <span className={`placeholder ${address ==='' && 'placeholder-inactive'}`}>Address</span>
+                                                        <span className={`placeholder ${address ==='' && 'placeholder-inactive'}`}><Lang word="Address"/></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -314,7 +315,7 @@ export default class UserProfile extends PureComponent{
                                                 <div className="no-results-container sb-spinner">
                                                 <span className="btn-preloader sb-preloader"></span>
                                                 </div> 
-                                                :'Submit'}
+                                                :<Lang word='Submit'/>}
                                             </button>}
                                         </div>
                             </div>
