@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import SelectableEventBtn from '../selectableEventBtn'
-import moment from 'moment-timezone' ;
+import moment from 'moment' ;
 import {convertSetName,stringReplacer} from '../../common'
 export  default class LiveOverviewGame extends PureComponent {
     constructor(props) {

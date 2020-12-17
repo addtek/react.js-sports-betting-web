@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { onFormInputFocus, onFormInputFocusLost } from '../../common'
 import {validateSMSCode,validatePhone,validatePassword} from '../../utils/index'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 export default class ForgotPassword extends PureComponent {
   constructor(props) {
     super(props)

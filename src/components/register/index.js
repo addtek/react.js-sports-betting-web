@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/material.css'
 import API from '../../services/api'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 const $api = API.getInstance()
 export default class RegisterFrom extends PureComponent {
     constructor(props) {

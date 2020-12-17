@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import {stringReplacer} from '../../common'
-import moment from 'moment-timezone'
+import moment from 'moment'
 export default class PopularEvent extends PureComponent {
     constructor(props) {
       super(props);

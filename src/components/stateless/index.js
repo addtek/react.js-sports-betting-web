@@ -1,6 +1,6 @@
 import React,{PureComponent} from 'react'
 import {stringReplacer} from '../../common'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 export const CheckBox = (props) => {
     return (
       <label className="container">{props.text}

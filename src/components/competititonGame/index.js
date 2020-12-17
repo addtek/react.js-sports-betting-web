@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import GameEventBtn from '../gameEventBtn'
 import {CompetitionLoader} from '../loader'
 import {stringReplacer} from '../../common'
-import moment from 'moment-timezone'
+import moment from 'moment'
 export default class CompetitionGame extends PureComponent {
     constructor(props) {
       super(props);

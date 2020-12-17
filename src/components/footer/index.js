@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import './footer.css'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import Skrill from '../../images/Skrill-Logo.svg'
 import Neteller from '../../images/NETELLER.png'
 import BitCoin from '../../images/bitcoin.svg'

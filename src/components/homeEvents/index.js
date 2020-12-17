@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import { stringReplacer, convertSetName } from '../../common'
 import SelectableEventBtn from '../../components/selectableEventBtn'
 import {SportItem} from '../../components/stateless'

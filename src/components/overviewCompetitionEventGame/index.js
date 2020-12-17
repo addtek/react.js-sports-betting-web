@@ -1,6 +1,6 @@
 import React, { PureComponent }  from 'react'
 import LiveOverviewGame from '../liveOverviewGame' 
-import moment from 'moment-timezone'
+import moment from 'moment'
 export default class OverviewCompetitionEventGame extends PureComponent {
     constructor(props) {
       super(props);

@@ -1,5 +1,5 @@
 import React,{PureComponent} from 'react'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import { BetSlipNotification, OddsType, OddsSettings } from '../stateless'
 import API from '../../services/api'
 import { oddConvert, dataStorage, betModeChange, stringReplacer, EventIDToNameMap, convertSetName, getCookie } from '../../common'
@@ -9,7 +9,7 @@ import {Transition} from 'react-spring/renderprops'
 
 import  './style.css'
 import { calcMD5 } from '../../utils/jsmd5'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 const $api = API.getInstance()
 export default class BetSlip extends PureComponent {
 

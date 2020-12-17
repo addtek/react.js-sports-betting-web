@@ -6,7 +6,7 @@ import {BetHistoryLoader} from '../../components/loader'
 import {onSelect, getCookie, makeToast} from '../../common'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 const $api = API.getInstance()
 export default class Transactions extends PureComponent {
     constructor(props) {

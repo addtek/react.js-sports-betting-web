@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import * as $ from 'jquery'
 import 'jquery-ui/ui/widgets/datepicker'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import { BetHistoryLoader } from '../loader'
 import { getCookie } from '../../common'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 const $api = API.getInstance()
 export default class Bonuses extends PureComponent {
   constructor(props) {

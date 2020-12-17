@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import Carousel from 'nuka-carousel';
 import {sortDateByStartTimeDesc} from '../../common'
 import {PagingDotsCustom} from '../stateless';
-import moment from 'moment-timezone';
+import moment from 'moment';
 import EventPrice from './event';
 
 export default class FeaturedGames extends PureComponent{

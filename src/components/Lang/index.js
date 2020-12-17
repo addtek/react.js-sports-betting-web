@@ -177,6 +177,5 @@ const lang ={
   }
   
 export default function Lang({user_lang,word}) { 
-    console.log(lang[user_lang])
     return lang[user_lang] !== void 0 && lang[user_lang][word] !== void 0? lang[user_lang][word]: word
  }

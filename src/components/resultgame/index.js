@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import {GameResultsLoder} from '../loader'
 export default class ResultsGame extends PureComponent {
     constructor(props) {

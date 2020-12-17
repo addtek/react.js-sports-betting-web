@@ -1,4 +1,4 @@
-import moment from 'moment-timezone'
+import moment from 'moment'
 import $ from 'jquery'
 export const browserurl = new URL(window.location.href),sportsbookStorage = window.localStorage,
  stringReplacer= (search, pin, replace, matchTo = null, fallback = '')=> {

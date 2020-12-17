@@ -4,7 +4,7 @@ import {
     convertSetName,
   
   } from '../../common'
-   import moment from 'moment-timezone'
+   import moment from 'moment'
 export class StatsBannerSoccer extends Component {
 
     render() {

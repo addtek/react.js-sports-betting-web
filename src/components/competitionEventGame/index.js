@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react' 
 import LiveBtn from '../liveBtn'
-import moment from 'moment-timezone'
+import moment from 'moment'
  import {
   stringReplacer,
   convertSetName,

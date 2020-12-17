@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { NavLink } from "react-router-dom";
 import './header.css'
 import logo from '../../images/logo.png'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import { allActionDucer } from '../../actionCreator'
 import { SPORTSBOOK_ANY, MODAL, LANG } from '../../actionReducers'
 import {updateBrowserHistoryState, setCookie, dataStorage} from '../../common'

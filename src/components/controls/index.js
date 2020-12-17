@@ -1,5 +1,5 @@
 import React,{PureComponent} from 'react'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import LiveEventSound from '../sound'
 import API from '../../services/api'
 import {stringReplacer, EventIDToNameMap, convertSetName } from '../../common'
@@ -9,7 +9,7 @@ import {
   StatsBannerBasketBall,
   StatsBannerTennis
 } from '../statsBanner'
-import Lang from '../Lang'
+import Lang from '../../containers/Lang'
 
 const $api = API.getInstance()
 export default class Controls extends PureComponent {

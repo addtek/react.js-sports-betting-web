@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import {ResultsLoader} from '../loader'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import $ from 'jquery'
 import {datepicker}  from 'jquery-ui'
 import 'jquery-ui/ui/widgets/datepicker'
