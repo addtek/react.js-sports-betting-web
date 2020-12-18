@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import * as $ from 'jquery'
 import 'jquery-ui/ui/widgets/datepicker'
-import  moment from 'moment-timezone'
+import  moment from 'moment'
+import 'moment/locale/fr'
 import {onFormInputFocus,onFormInputFocusLost,onSelect,makeToast, getCookie} from '../../common'
 import { allActionDucer } from '../../actionCreator'
 import {  PROFILE, MODAL } from '../../actionReducers'
@@ -48,6 +49,7 @@ export default class UserProfile extends PureComponent{
          this.changePass= this.changePass.bind(this)
     }
      componentDidMount() {
+        moment.locale(this.props.appState.lang.substr(0,2))
        $("#datepickerBD").datepicker({ maxDate: new Date(moment().subtract(18, 'years')), onSelect: function () { onSelect('datepickerBD') },changeMonth: true,
         changeYear: true});
         $("#datepickerBD").datepicker("option", "dateFormat", "yy/mm/dd");
