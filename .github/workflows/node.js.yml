@@ -24,10 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        host: 162.0.213.221
+        host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-    - run : cd /var/www/www.corisbet.com && git pull
+        script: cd /var/www/www.corisbet.com && git pull
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
