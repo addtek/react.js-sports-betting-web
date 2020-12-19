@@ -4,7 +4,8 @@ import component from '../../components/results'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        sportsbook: state.sportsbook
+        sportsbook: state.sportsbook,
+        appState: state.appState
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {

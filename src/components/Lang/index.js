@@ -1,4 +1,5 @@
 // import * as lang from '../../lang.json';
+import React from 'react'
 const lang ={
     "fra": {
       "Prematch": "Pre-match",
@@ -176,6 +177,10 @@ const lang ={
     }
   }
   
+  
+export const translate = function(user_lang,word){
+    return lang[user_lang] !== void 0 && lang[user_lang][word] !== void 0? lang[user_lang][word]: word
+  }
 export default function Lang({user_lang,word}) { 
     return lang[user_lang] !== void 0 && lang[user_lang][word] !== void 0? lang[user_lang][word]: word
  }

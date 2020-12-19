@@ -11,6 +11,7 @@ import  CashoutDialog  from '../../components/cashoutdialog'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
 import Lang from '../../containers/Lang';
+import { translate } from '../Lang'
 
 const $api = API.getInstance();
 export default class BetHistory extends PureComponent{
@@ -346,11 +347,11 @@ export default class BetHistory extends PureComponent{
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
                   <span><Lang word={"Bet Type"}/></span>
                   <select name="betType" value={type} onChange={(e) => { this.setBetType(e) }}>
-                    <option value="-1"><Lang word={"All"}/></option>
-                    <option value="1"><Lang word={"Single"}/></option>
-                    <option value="2"><Lang word={"Multiple"}/></option>
-                    <option value="3"><Lang word={"System"}/></option>
-                    <option value="4"><Lang word={"Chain"}/></option>
+                    <option value="-1">{translate(this.props.appState.lang,"All")}</option>
+                    <option value="1">{translate(this.props.appState.lang,"Single")}</option>
+                    <option value="2">{translate(this.props.appState.lang,"Multiple")}</option>
+                    <option value="3">{translate(this.props.appState.lang,"System")}</option>
+                    <option value="4">{translate(this.props.appState.lang,"Chain")}</option>
                   </select>
                   <i className="icon-icon-arrow-down"></i>
                 </div>

@@ -7,6 +7,7 @@ import {onSelect, getCookie, makeToast} from '../../common'
 import API from '../../services/api'
 import { calcMD5 } from '../../utils/jsmd5'
 import Lang from '../../containers/Lang'
+import { translate } from '../Lang'
 const $api = API.getInstance()
 export default class Transactions extends PureComponent {
     constructor(props) {
@@ -167,13 +168,13 @@ export default class Transactions extends PureComponent {
                 <div className="input-group" style={{ margin: '0 0 5px 0' }}>
                   <span><Lang word={"Transaction Type"}/></span>
                   <select name="betType" value={bet_type} onChange={(e) => { this.setBetType(e) }}>
-                    <option value="ALL"><Lang word={"All"}/></option>
-                    <option value="0"><Lang word={"Deposit"}/></option>
-                    <option value="1"><Lang word={"Withdrawal"}/></option>
-                    <option value="2"><Lang word={"Winnings"}/></option>
-                    <option value="3"><Lang word={"Activity"}/></option>
-                    <option value="4"><Lang word={"Bets"}/></option>
-                    <option value="5"><Lang word={"Rolled Back Bets"}/></option>
+                    <option value="ALL">{translate(this.props.appState.lang,"All")}</option>
+                    <option value="0">{translate(this.props.appState.lang,"Deposit")}</option>
+                    <option value="1">{translate(this.props.appState.lang,"Withdrawal")}</option>
+                    <option value="2">{translate(this.props.appState.lang,"Winnings")}</option>
+                    <option value="3">{translate(this.props.appState.lang,"Activity")}</option>
+                    <option value="4">{translate(this.props.appState.lang,"Bets")}</option>
+                    <option value="5">{translate(this.props.appState.lang,"Rolled Back Bets")}</option>
                   </select>
                   <i className="icon-icon-arrow-down"></i>
                 </div>

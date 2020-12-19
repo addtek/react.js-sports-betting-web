@@ -10,6 +10,7 @@ import {validateEmail,validateFullname,validatePassword,validateUsername} from '
 import { calcMD5 } from '../../utils/jsmd5'
 import API from '../../services/api'
 import Lang from '../../containers/Lang'
+import { translate } from '../Lang'
 const $api = API.getInstance()
 export default class UserProfile extends PureComponent{
     constructor(props){
@@ -235,9 +236,9 @@ export default class UserProfile extends PureComponent{
                                                 <div className="form-element empty">
                                                     <div className="input-wrapper ">
                                                         <select name="gender" style={{padding: '18px 10px 0'}} value={gender} className={` ember-text-field ember-view`} type="text" onChange={(e) => this.onInputChange(e)} onFocus={(e) => onFormInputFocus(e)} onBlur={(e) => onFormInputFocusLost(e)} autoComplete="off" disabled={profile.completeInfo?true:false}>
-                                                            <option value="U"><Lang word="Don't Specify"/></option>
-                                                            <option value="M"><Lang word="Male"/></option>
-                                                            <option value="F"><Lang word ="Female"/></option>
+                                                            <option value="U">{translate(this.props.appState.lang,"Don't Specify")}</option>
+                                                            <option value="M">{translate(this.props.appState.lang,"Male")}</option>
+                                                            <option value="F">{translate(this.props.appState.lang,"Female")}</option>
                                                         </select>
                                                         <span className={`placeholder ${gender ==='' && 'placeholder-inactive'}`}><Lang word ="Gender"/></span>
                                                     </div>
