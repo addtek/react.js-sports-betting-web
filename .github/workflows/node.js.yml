@@ -30,7 +30,11 @@ jobs:
 #         script: cd /var/www/www.corisbet.com
     - name: Install dependencies
       run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+
+    - name: Run the tests
+      run: npm test
+
+    - name: Build
+      run: npm run build
       env:
-        CI: true
+        CI: false
